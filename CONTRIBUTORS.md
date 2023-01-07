@@ -5,7 +5,9 @@ Add yourself as a contributor to this project as a Markdown link that links your
     - [Dione Developer](https://github.com/DioneDeveloper) 💅
 
 ## Cohort Participants
+
 - [Jeff Lam](https://github.com/kurzbird) 🫠
+- [Nesha Mervin](https://github.com/neshacascia) 🪐
 
 ## Mentors
 
