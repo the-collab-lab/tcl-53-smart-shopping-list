@@ -13,5 +13,7 @@ Add yourself as a contributor to this project as a Markdown link that links your
 ## Mentors
 
 - [Megan Sullivan](https://github.com/meganesu)
+- [Jason Spittel](https://github.com/spittel)
+
 
 ## Code of Conduct Contacts
