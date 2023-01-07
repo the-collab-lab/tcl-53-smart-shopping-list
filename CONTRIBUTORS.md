@@ -11,4 +11,6 @@ Add yourself as a contributor to this project as a Markdown link that links your
 
 ## Mentors
 
+- [Megan Sullivan](https://github.com/meganesu)
+
 ## Code of Conduct Contacts
