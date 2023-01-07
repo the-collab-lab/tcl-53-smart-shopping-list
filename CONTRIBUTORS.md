@@ -9,6 +9,8 @@ Add yourself as a contributor to this project as a Markdown link that links your
 - [Jeff Lam](https://github.com/kurzbird) 🫠
 - [Nesha Mervin](https://github.com/neshacascia) 🪐
 - [Jenna Ly](https://github.com/jennaly) 🦕
+- [Nina Fuentes](https://github.com/FuentesNina) 🥰
+
 
 ## Mentors
 
