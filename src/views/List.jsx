@@ -8,13 +8,8 @@ export function List({ data }) {
 			</p>
 			<ul>
 				{data.map((list) => {
-					<ListItem name={list.name} />;
+					return <ListItem name={list.name} />;
 				})}
-				{/**
-				 * TODO: write some JavaScript that renders the `data` array
-				 * using the `ListItem` component that's imported at the top
-				 * of this file.
-				 */}
 			</ul>
 		</>
 	);
