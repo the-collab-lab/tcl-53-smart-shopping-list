@@ -127,7 +127,6 @@ export function AddItem({ listToken }) {
  * get the button to submit the form [DONE]
  * submit the form when pressing [DONE]
  * update the itemName [DONE]
- *
  * have mistakes/required for nameitem (form validation before submit) [DONE]
  * clear form after submit [DONE]
  * how to get the listID [DONE]
