@@ -1,11 +1,17 @@
-import { List } from './List';
+// import { List } from './List';
 
 import { useState } from 'react';
 import { addItem } from '../api/firebase';
 
-// addItem(listId, { itemName, daysUntilNextPurchase })
-
 export function AddItem({ listToken }) {
+	//itemName field behavior
+	const [itemName, setItemName] = useState('');
+
+	const handleChangeItem = (e) => {
+		setItemName(e.target.value);
+	};
+
+	//buyNext field behavior
 	const soon = '7';
 	const kindaSoon = '14';
 	const notSoon = '30';
@@ -16,25 +22,59 @@ export function AddItem({ listToken }) {
 		setNextPurchase(e.target.value);
 	};
 
+	//actions upon form submission
+	const [submissionConfirmation, setsubmissionConfirmation] = useState('');
+
 	const submitForm = (e) => {
 		e.preventDefault();
 
+		//form validation
+		if (itemName === '') {
+			alert('Please specify the name of the item');
+			return;
+		}
+
 		//define listID
-		//get itemName
-		console.log('form submitted');
+		let listId;
 
-		let daysUntilNextPurchase = Number(nextPurchase);
+		let itemData = {
+			itemName: itemName,
+			daysUntilNextPurchase: Number(nextPurchase),
+		};
 
-		// addItem(listId, { itemName, daysUntilNextPurchase });
+		// additem to the database
+		addItem(listToken, itemData);
+
+		// (if submission was sucessful successful)
+		if (true) {
+			//clear form
+			setItemName('');
+			setNextPurchase(soon);
+			// put a note that the form was submitted
+			setsubmissionConfirmation(`${itemName} was added to your shopping list.`);
+			// erase notification after 10 seconds.
+			setTimeout(setsubmissionConfirmation, 10000);
+		} else {
+			// notify that the item was not submitted
+			setsubmissionConfirmation(
+				`There was a problem adding your item, please try again.`,
+			);
+		}
 	};
 
 	return (
 		<>
 			{/* <p>Add Item</p> */}
-			{/* <form onSubmit = {addItem(listToken, { itemName, })}> */}
 			<form onSubmit={submitForm}>
-				<label htmlFor="itemName">Item Name</label>
-				<input id="itemName"></input>
+				<label htmlFor="itemName">
+					Item Name
+					<input
+						type="text"
+						id="itemName"
+						value={itemName}
+						onChange={handleChangeItem}
+					/>
+				</label>
 
 				<label htmlFor="buyAgain">How soon will you buy this again?</label>
 				<fieldset name="buyAgain">
@@ -74,6 +114,8 @@ export function AddItem({ listToken }) {
 
 				<button type="submit">Add Item</button>
 			</form>
+
+			<p>{submissionConfirmation}</p>
 		</>
 	);
 	// <p>
@@ -84,8 +126,13 @@ export function AddItem({ listToken }) {
 /**
  * Issues:
  * select only 1 radio button [DONE]
- * how to setup the function for on submit
- * get the button to submit the form
- * submit the form when pressing ""
+ * how to setup the function for on submit [DONE]
+ * get the button to submit the form [DONE]
+ * submit the form when pressing [DONE]
+ * update the itemName [DONE]
+ *
+ * have mistakes/required for nameitem (form validation before submit) [DONE]
+ * clear form after submit [DONE]
  * how to get the listID
+ * submit item to the database
  */
