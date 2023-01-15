@@ -34,19 +34,16 @@ export function AddItem({ listToken }) {
 			return;
 		}
 
-		//define listID
-		let listId;
-
 		let itemData = {
 			itemName: itemName,
 			daysUntilNextPurchase: Number(nextPurchase),
 		};
 
 		// additem to the database
-		addItem(listToken, itemData);
+		const submission = addItem(itemName, itemData);
 
 		// (if submission was sucessful successful)
-		if (true) {
+		if (submission) {
 			//clear form
 			setItemName('');
 			setNextPurchase(soon);
@@ -133,6 +130,7 @@ export function AddItem({ listToken }) {
  *
  * have mistakes/required for nameitem (form validation before submit) [DONE]
  * clear form after submit [DONE]
- * how to get the listID
- * submit item to the database
+ * how to get the listID [DONE]
+ * submit item to the database [DONE]
+ * check if item was submitted successfully...
  */
