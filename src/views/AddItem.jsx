@@ -40,7 +40,7 @@ export function AddItem({ listToken }) {
 		};
 
 		// additem to the database
-		const submission = addItem(itemName, itemData);
+		const submission = addItem(listToken, itemData);
 
 		// (if submission was sucessful successful)
 		if (submission) {
