@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import { redirect } from 'react-router-dom';
 import { AddItem, Home, Layout, List } from './views';
 
 import { getItemData, streamListItems } from './api';
@@ -19,11 +19,14 @@ export function App() {
 	 * to create and join a new list.
 	 */
 	const [listToken, setListToken] = useStateWithStorage(
-		'my test list',
+		null,
 		'tcl-shopping-list-token',
 	);
 
 	useEffect(() => {
+		if (listToken) {
+			redirect('/list');
+		}
 		if (!listToken) return;
 
 		/**
@@ -51,7 +54,10 @@ export function App() {
 		<Router>
 			<Routes>
 				<Route path="/" element={<Layout />}>
-					<Route index element={<Home />} />
+					<Route
+						index
+						element={<Home listToken={listToken} setListToken={setListToken} />}
+					/>
 					<Route path="/list" element={<List data={data} />} />
 					<Route path="/add-item" element={<AddItem />} />
 				</Route>
