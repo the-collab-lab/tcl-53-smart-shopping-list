@@ -32,20 +32,13 @@ export function AddItem({ listToken }) {
 			daysUntilNextPurchase: Number(nextPurchase),
 		};
 
-		// additem to the database
-		const submission = addItem(listToken, itemData);
+		try {
+			addItem(listToken, itemData);
 
-		// (if submission was sucessful successful)
-		if (submission) {
-			//clear form
-			setItemName('');
-			setNextPurchase(soon);
-
-			// put a note that the form was submitted
+			// put a note that the form was submitted (and erase after 5 seconds)
 			setsubmissionConfirmation(`${itemName} was added to your shopping list.`);
-			setTimeout(setsubmissionConfirmation, 10000);
-		} else {
-			// notify that the item was not submitted
+			setTimeout(setsubmissionConfirmation, 5000);
+		} catch {
 			setsubmissionConfirmation(
 				`There was a problem adding your item, please try again.`,
 			);
