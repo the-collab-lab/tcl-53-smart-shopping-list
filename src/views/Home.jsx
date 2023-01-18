@@ -16,7 +16,7 @@ export function Home({ listToken, setListToken }) {
 		if (listToken) {
 			navigate('/list');
 		}
-	}, [listToken, navigate]);
+	}, [listToken]);
 
 	return (
 		<div className="Home">
