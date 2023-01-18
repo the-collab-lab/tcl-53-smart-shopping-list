@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { redirect } from 'react-router-dom';
 import { AddItem, Home, Layout, List } from './views';
 
 import { getItemData, streamListItems } from './api';
@@ -24,9 +23,6 @@ export function App() {
 	);
 
 	useEffect(() => {
-		if (listToken) {
-			redirect('/list');
-		}
 		if (!listToken) return;
 
 		/**
