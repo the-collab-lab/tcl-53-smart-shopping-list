@@ -18,7 +18,7 @@ export function AddItem({ listToken }) {
 		e.preventDefault();
 
 		//form validation
-		if (itemName === '' || nextPurchase === 0) {
+		if (itemName === '') {
 			alert('Please specify the name of the item');
 			return;
 		}
