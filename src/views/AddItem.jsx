@@ -2,47 +2,56 @@ import { useState } from 'react';
 import { addItem } from '../api/firebase';
 
 export function AddItem({ listToken }) {
-	const soon = '7';
-	const kindaSoon = '14';
-	const notSoon = '30';
+	const soon = 7;
+	const kindaSoon = 14;
+	const notSoon = 30;
 
 	const [itemName, setItemName] = useState('');
-	const [nextPurchase, setNextPurchase] = useState(soon);
+	const [nextPurchase, setNextPurchase] = useState(0);
 	const [submissionConfirmation, setsubmissionConfirmation] = useState('');
 
-	const handleChangeItem = (e) => {
+	const handleChange = (e) => {
 		setItemName(e.target.value);
-	};
-
-	const handleChangeNextPurchase = (e) => {
-		setNextPurchase(e.target.value);
 	};
 
 	const submitForm = (e) => {
 		e.preventDefault();
 
 		//form validation
-		if (itemName === '') {
+		if (itemName === '' || nextPurchase === 0) {
 			alert('Please specify the name of the item');
+			return;
+		}
+
+		if (nextPurchase === 0) {
+			alert(
+				"Please select how soon you'll be purchasing the item again (soon/Kinda Soon/Not Soon",
+			);
 			return;
 		}
 
 		let itemData = {
 			itemName: itemName,
-			daysUntilNextPurchase: Number(nextPurchase),
+			daysUntilNextPurchase: nextPurchase,
 		};
 
-		try {
-			addItem(listToken, itemData);
+		addItem(listToken, itemData)
+			.then(() => {
+				//clear form
+				setItemName('');
+				setNextPurchase(0);
 
-			// put a note that the form was submitted (and erase after 5 seconds)
-			setsubmissionConfirmation(`${itemName} was added to your shopping list.`);
-			setTimeout(setsubmissionConfirmation, 5000);
-		} catch {
-			setsubmissionConfirmation(
-				`There was a problem adding your item, please try again.`,
-			);
-		}
+				// put a note that the form was submitted (and erase after 5 seconds)
+				setsubmissionConfirmation(
+					`${itemName} was added to your shopping list.`,
+				);
+				setTimeout(setsubmissionConfirmation, 5000);
+			})
+			.catch(() => {
+				setsubmissionConfirmation(
+					`There was a problem adding your item, please try again.`,
+				);
+			});
 	};
 
 	return (
@@ -54,7 +63,7 @@ export function AddItem({ listToken }) {
 						type="text"
 						id="itemName"
 						value={itemName}
-						onChange={handleChangeItem}
+						onChange={handleChange}
 					/>
 				</label>
 
@@ -64,9 +73,9 @@ export function AddItem({ listToken }) {
 						<input
 							type="radio"
 							id="soon"
-							value={soon}
+							name="purchase-frequency"
 							checked={nextPurchase === soon}
-							onChange={handleChangeNextPurchase}
+							onChange={(e) => setNextPurchase(soon)}
 						/>
 						Soon
 					</label>
@@ -75,9 +84,9 @@ export function AddItem({ listToken }) {
 						<input
 							type="radio"
 							id="kindaSoon"
-							value={kindaSoon}
+							name="purchase-frequency"
 							checked={nextPurchase === kindaSoon}
-							onChange={handleChangeNextPurchase}
+							onChange={(e) => setNextPurchase(kindaSoon)}
 						/>
 						Kinda Soon
 					</label>
@@ -86,9 +95,9 @@ export function AddItem({ listToken }) {
 						<input
 							type="radio"
 							id="notSoon"
-							value={notSoon}
+							name="purchase-frequency"
 							checked={nextPurchase === notSoon}
-							onChange={handleChangeNextPurchase}
+							onChange={(e) => setNextPurchase(notSoon)}
 						/>
 						Not Soon
 					</label>
