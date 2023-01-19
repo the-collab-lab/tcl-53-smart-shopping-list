@@ -106,7 +106,9 @@ export function AddItem({ listToken }) {
 				<button type="submit">Add Item</button>
 			</form>
 
-			<p>{submissionConfirmation}</p>
+			{submissionConfirmation && 
+			    <p>{submissionConfirmation}</p>
+			}
 		</>
 	);
 }
