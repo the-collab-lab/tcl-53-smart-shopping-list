@@ -2,13 +2,13 @@ import { useState } from 'react';
 import { addItem } from '../api/firebase';
 
 export function AddItem({ listToken }) {
-	const soon = 7;
-	const kindaSoon = 14;
-	const notSoon = 30;
+	const SOON = 7;
+	const KINDA_SOON = 14;
+	const NOT_SOON = 30;
 
 	const [itemName, setItemName] = useState('');
 	const [nextPurchase, setNextPurchase] = useState(0);
-	const [submissionConfirmation, setsubmissionConfirmation] = useState('');
+	const [submissionConfirmation, setSubmissionConfirmation] = useState('');
 
 	const handleChange = (e) => {
 		setItemName(e.target.value);
@@ -42,13 +42,13 @@ export function AddItem({ listToken }) {
 				setNextPurchase(0);
 
 				// put a note that the form was submitted (and erase after 5 seconds)
-				setsubmissionConfirmation(
+				setSubmissionConfirmation(
 					`${itemName} was added to your shopping list.`,
 				);
 				setTimeout(setsubmissionConfirmation, 5000);
 			})
 			.catch((error) => {
-				setsubmissionConfirmation(
+				setSubmissionConfirmation(
 					`There was a problem adding your item, please try again.`,
 				);
 				console.log(error);
@@ -75,8 +75,8 @@ export function AddItem({ listToken }) {
 							type="radio"
 							id="soon"
 							name="purchase-frequency"
-							checked={nextPurchase === soon}
-							onChange={(e) => setNextPurchase(soon)}
+							checked={nextPurchase === SOON}
+							onChange={(e) => setNextPurchase(SOON)}
 						/>
 						Soon
 					</label>
@@ -86,8 +86,8 @@ export function AddItem({ listToken }) {
 							type="radio"
 							id="kindaSoon"
 							name="purchase-frequency"
-							checked={nextPurchase === kindaSoon}
-							onChange={(e) => setNextPurchase(kindaSoon)}
+							checked={nextPurchase === KINDA_SOON}
+							onChange={(e) => setNextPurchase(KINDA_SOON)}
 						/>
 						Kinda Soon
 					</label>
@@ -97,8 +97,8 @@ export function AddItem({ listToken }) {
 							type="radio"
 							id="notSoon"
 							name="purchase-frequency"
-							checked={nextPurchase === notSoon}
-							onChange={(e) => setNextPurchase(notSoon)}
+							checked={nextPurchase === NOT_SOON}
+							onChange={(e) => setNextPurchase(NOT_SOON)}
 						/>
 						Not Soon
 					</label>
