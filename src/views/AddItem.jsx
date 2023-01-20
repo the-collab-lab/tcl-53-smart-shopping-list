@@ -47,10 +47,11 @@ export function AddItem({ listToken }) {
 				);
 				setTimeout(setsubmissionConfirmation, 5000);
 			})
-			.catch(() => {
+			.catch((error) => {
 				setsubmissionConfirmation(
 					`There was a problem adding your item, please try again.`,
 				);
+				console.log(error);
 			});
 	};
 
