@@ -25,7 +25,7 @@ export function AddItem({ listToken }) {
 
 		if (nextPurchase === 0) {
 			alert(
-				"Please select how soon you'll be purchasing the item again (soon/Kinda Soon/Not Soon",
+				"Please select how soon you'll be purchasing the item again (soon/Kinda Soon/Not Soon)",
 			);
 			return;
 		}
