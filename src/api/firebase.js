@@ -53,8 +53,6 @@ export function getItemData(snapshot) {
  */
 export async function addItem(listId, { itemName, daysUntilNextPurchase }) {
 	const listCollectionRef = collection(db, listId);
-	// TODO: Replace this call to console.log with the appropriate
-	// Firebase function, so this information is sent to your database!
 	return addDoc(listCollectionRef, {
 		dateCreated: new Date(),
 		// NOTE: This is null because the item has just been created.
