@@ -45,7 +45,7 @@ export function AddItem({ listToken }) {
 				setSubmissionConfirmation(
 					`${itemName} was added to your shopping list.`,
 				);
-				setTimeout(setsubmissionConfirmation, 5000);
+				setTimeout(setSubmissionConfirmation, 5000);
 			})
 			.catch((error) => {
 				setSubmissionConfirmation(
@@ -107,9 +107,7 @@ export function AddItem({ listToken }) {
 				<button type="submit">Add Item</button>
 			</form>
 
-			{submissionConfirmation && 
-			    <p>{submissionConfirmation}</p>
-			}
+			{submissionConfirmation && <p>{submissionConfirmation}</p>}
 		</>
 	);
 }
