@@ -70,3 +70,7 @@ You’ll want to make your first contribution to this repo before your kick-off 
 ## Unit Testing with Jest
 
 This tutorial (https://dev.to/ivadyhabimana/setup-jest-and-react-testing-library-in-a-react-project-a-step-by-step-guide-1mf0) was followed to setup this project use the Jest Test runner to write unit tests against this repo if you wish.
+
+run :
+npm run test
+in terminal to get jest running and listening for code changes

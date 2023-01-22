@@ -1,0 +1,58 @@
+// Vitest Snapshot v1
+
+exports[`should take a snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="Layout"
+  >
+    <header
+      class="Layout-header"
+    >
+      <h1>
+        Smart shopping list
+      </h1>
+    </header>
+    <main
+      class="Layout-main"
+    >
+      <div
+        class="Home"
+      >
+        <p>
+          Hello from the home (
+          <code>
+            /
+          </code>
+          ) page!
+        </p>
+        <button>
+          Create a new list
+        </button>
+      </div>
+    </main>
+    <nav
+      class="Nav"
+    >
+      <a
+        aria-current="page"
+        class="Nav-link active"
+        href="/"
+      >
+        Home
+      </a>
+      <a
+        class="Nav-link"
+        href="/list"
+      >
+        List
+      </a>
+      <a
+        class="Nav-link"
+        href="/add-item"
+      >
+        Add Item
+      </a>
+    </nav>
+  </div>
+</DocumentFragment>
+`;
