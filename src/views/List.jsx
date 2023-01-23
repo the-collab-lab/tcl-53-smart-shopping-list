@@ -12,13 +12,12 @@ export function List({ data }) {
 		item.name.toLowerCase().includes(searchedItem.toLowerCase()),
 	);
 
-	console.log(filteredItems);
 	return (
 		<>
 			<p>
 				Hello from the <code>/list</code> page!
 			</p>
-			<form>
+			<form onSubmit={(e) => e.preventDefault()}>
 				<label htmlFor="search">Filter items</label>
 				<input
 					id="search"
