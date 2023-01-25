@@ -21,15 +21,20 @@ export function List({ data }) {
 				<label htmlFor="search">Filter items</label>
 				<input
 					id="search"
-					type="search"
+					type="text"
 					placeholder="Start typing here..."
 					value={searchedItem}
 					onChange={handleChange}
 				/>
+				{searchedItem && (
+					<button type="reset" onClick={() => setSearchedItem('')}>
+						X
+					</button>
+				)}
 			</form>
 			<ul>
 				{!filteredItems.length ? (
-					<p>no item found</p>
+					<p>No items found.</p>
 				) : (
 					filteredItems.map((list) => {
 						return <ListItem name={list.name} key={list.id} />;
