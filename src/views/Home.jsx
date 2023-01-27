@@ -28,15 +28,16 @@ export function Home({ listToken, setListToken }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		const caseSensitiveToken = existingToken.toLowerCase();
 
 		// conects to db
 		// checks if the token that user inputted is associated with any lists
-		streamListItems(existingToken, (snapshot) => {
+		streamListItems(caseSensitiveToken, (snapshot) => {
 			const nextData = getItemData(snapshot);
 
 			// if there is a list, set the token to the listToken state
 			if (nextData.length > 0) {
-				setListToken(existingToken);
+				setListToken(caseSensitiveToken);
 			} else {
 				setErrorMessage("List doesn't exist");
 			}
