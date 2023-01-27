@@ -65,7 +65,7 @@ export function Home({ listToken, setListToken }) {
 					<button type="submit">Submit</button>
 				</form>
 
-				{errorMessage.length > 0 && <p>{errorMessage}</p>}
+				{errorMessage && <p>{errorMessage}</p>}
 			</div>
 		</div>
 	);
