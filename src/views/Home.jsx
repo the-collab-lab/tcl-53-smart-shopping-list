@@ -59,6 +59,7 @@ export function Home({ listToken, setListToken }) {
 							id="existingToken"
 							value={existingToken}
 							onChange={handleChange}
+							required
 						/>
 					</label>
 
