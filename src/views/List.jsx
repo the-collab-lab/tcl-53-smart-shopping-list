@@ -14,6 +14,7 @@ export function List({ data }) {
 
 	return (
 		<>
+			{/* Welcome prompt */}
 			<p>
 				Hello from the <code>/list</code> page!
 			</p>
