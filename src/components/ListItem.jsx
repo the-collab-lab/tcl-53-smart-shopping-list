@@ -1,6 +1,7 @@
 import './ListItem.css';
 import { updateItem } from '../api/firebase';
 import { useEffect, useState } from 'react';
+import { getFutureDate } from '../utils';
 
 export function ListItem({ name, listToken, itemId, data }) {
 	const [checkedState, setCheckedState] = useState(data.checked);
@@ -12,12 +13,10 @@ export function ListItem({ name, listToken, itemId, data }) {
 
 	useEffect(function unCheckAfterTime() {
 		if (data.dateLastPurchased !== null) {
-			const now = Date.now();
-			const oneDayInSeconds = 24 * 60 * 60;
-			const newDateLastPurchased = data.dateLastPurchased.seconds;
-			const limit = (newDateLastPurchased + oneDayInSeconds) * 1000;
+			const yesterday = getFutureDate(-1);
+			const dateLastPurchased = new Date(data.dateLastPurchased.toDate());
 
-			if (now > limit && data.checked === true) {
+			if (yesterday > dateLastPurchased && data.checked === true) {
 				setCheckedState(!data.checked);
 				updateItem(listToken, itemId, !data.checked);
 			}
