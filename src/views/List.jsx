@@ -24,27 +24,31 @@ export function List({ data }) {
 			<p>
 				Hello from the <code>/list</code> page!
 			</p>
-			<form onSubmit={(e) => e.preventDefault()}>
-				<label htmlFor="search">Filter items</label>
-				<input
-					id="search"
-					type="text"
-					placeholder="Start typing here..."
-					value={searchedItem}
-					onChange={handleChange}
-				/>
-				{searchedItem && (
-					<button type="reset" onClick={() => setSearchedItem('')}>
-						X
-					</button>
-				)}
-			</form>
+			{!data.length ? (
+				<div>
+					<p>Your shopping list is currently empty.</p>
+					<button onClick={routeToAddItem}>Add your first item</button>
+				</div>
+			) : (
+				<form onSubmit={(e) => e.preventDefault()}>
+					<label htmlFor="search">Filter items</label>
+					<input
+						id="search"
+						type="text"
+						placeholder="Start typing here..."
+						value={searchedItem}
+						onChange={handleChange}
+					/>
+					{searchedItem && (
+						<button type="reset" onClick={() => setSearchedItem('')}>
+							X
+						</button>
+					)}
+				</form>
+			)}
 			<ul>
-				{!filteredItems.length ? (
-					<div>
-						<p>Your shopping list is currently empty.</p>
-						<button onClick={routeToAddItem}>Add your first item</button>
-					</div>
+				{!filteredItems.length && searchedItem ? (
+					<p>No items found.</p>
 				) : (
 					filteredItems.map((list) => {
 						return <ListItem name={list.name} key={list.id} />;
