@@ -5,30 +5,27 @@ import { useEffect, useState } from 'react';
 export function ListItem({ name, listToken, itemId, data }) {
 	const [checkedState, setCheckedState] = useState(data.checked);
 
-	const handleChange = (event) => {
-		// console.log(event.target.checked)
-		if (event.target.checked) {
-			setCheckedState(true);
-		} else {
-			setCheckedState(false);
-		}
-		updateItem(listToken, itemId, checkedState);
+	const handleChange = () => {
+		setCheckedState(!data.checked);
+		updateItem(listToken, itemId, !data.checked);
 	};
 
-	// useEffect(() => {
-	// 	function unCheckAfterTime() {
-	// 		const now = Date.now();
-	// 		const oneDayInSeconds = 24 * 60 * 60;
-	// 		const newDateLastPurchased = data.dateLastPurchased.seconds;
-	// 		const limit = (newDateLastPurchased + oneDayInSeconds) * 1000;
+	useEffect(() => {
+		function unCheckAfterTime() {
+			if (data.dateLastPurchased !== null) {
+				const now = Date.now();
+				const oneDayInSeconds = 24 * 60 * 60;
+				const newDateLastPurchased = data.dateLastPurchased.seconds;
+				const limit = (newDateLastPurchased + oneDayInSeconds) * 1000;
 
-	// 		if (now > limit && checkedState === true) {
-	// 			setCheckedState(false);
-	// 			updateItem(listToken, itemId, checkedState);
-	// 		}
-	// 	}
-	// 	unCheckAfterTime();
-	// }, [checkedState])
+				if (now > limit && data.checked === true) {
+					setCheckedState(!data.checked);
+					updateItem(listToken, itemId, !data.checked);
+				}
+			}
+		}
+		unCheckAfterTime();
+	});
 
 	return (
 		<label htmlFor={name}>
