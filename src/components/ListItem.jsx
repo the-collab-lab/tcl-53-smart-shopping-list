@@ -10,21 +10,18 @@ export function ListItem({ name, listToken, itemId, data }) {
 		updateItem(listToken, itemId, !data.checked);
 	};
 
-	useEffect(() => {
-		function unCheckAfterTime() {
-			if (data.dateLastPurchased !== null) {
-				const now = Date.now();
-				const oneDayInSeconds = 24 * 60 * 60;
-				const newDateLastPurchased = data.dateLastPurchased.seconds;
-				const limit = (newDateLastPurchased + oneDayInSeconds) * 1000;
+	useEffect(function unCheckAfterTime() {
+		if (data.dateLastPurchased !== null) {
+			const now = Date.now();
+			const oneDayInSeconds = 24 * 60 * 60;
+			const newDateLastPurchased = data.dateLastPurchased.seconds;
+			const limit = (newDateLastPurchased + oneDayInSeconds) * 1000;
 
-				if (now > limit && data.checked === true) {
-					setCheckedState(!data.checked);
-					updateItem(listToken, itemId, !data.checked);
-				}
+			if (now > limit && data.checked === true) {
+				setCheckedState(!data.checked);
+				updateItem(listToken, itemId, !data.checked);
 			}
 		}
-		unCheckAfterTime();
 	});
 
 	return (
