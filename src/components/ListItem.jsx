@@ -7,10 +7,14 @@ export function ListItem({ name, listToken, itemId, data }) {
 	const [checkedState, setCheckedState] = useState(data.checked);
 
 	const checkTimePast = () => {
-		const yesterday = getFutureDate(-1);
-		const dateLastPurchased = new Date(data.dateLastPurchased.toDate());
+		if (data.dateLastPurchased !== null) {
+			const yesterday = getFutureDate(-1);
+			const dateLastPurchased = new Date(data.dateLastPurchased.toDate());
 
-		return yesterday > dateLastPurchased;
+			return yesterday > dateLastPurchased;
+		}
+
+		return true;
 	};
 
 	const handleChange = () => {
@@ -21,11 +25,9 @@ export function ListItem({ name, listToken, itemId, data }) {
 	};
 
 	useEffect(function unCheckAfterTime() {
-		if (data.dateLastPurchased !== null) {
-			if (checkTimePast() && data.checked === true) {
-				setCheckedState(!data.checked);
-				updateItem(listToken, itemId, !data.checked);
-			}
+		if (checkTimePast() && data.checked === true) {
+			setCheckedState(!data.checked);
+			updateItem(listToken, itemId, !data.checked);
 		}
 	});
 
