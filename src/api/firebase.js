@@ -1,4 +1,11 @@
-import { collection, onSnapshot, addDoc } from 'firebase/firestore';
+import {
+	collection,
+	onSnapshot,
+	doc,
+	addDoc,
+	updateDoc,
+	getDoc,
+} from 'firebase/firestore';
 import { db } from './config';
 import { getFutureDate } from '../utils';
 
@@ -51,7 +58,10 @@ export function getItemData(snapshot) {
  * @param {string} itemData.itemName The name of the item.
  * @param {number} itemData.daysUntilNextPurchase The number of days until the user thinks they'll need to buy the item again.
  */
-export async function addItem(listId, { itemName, daysUntilNextPurchase }) {
+export async function addItem(
+	listId,
+	{ itemName, daysUntilNextPurchase, checkedState },
+) {
 	const listCollectionRef = collection(db, listId);
 	return addDoc(listCollectionRef, {
 		dateCreated: new Date(),
@@ -61,15 +71,26 @@ export async function addItem(listId, { itemName, daysUntilNextPurchase }) {
 		dateNextPurchased: getFutureDate(daysUntilNextPurchase),
 		name: itemName,
 		totalPurchases: 0,
+		checked: false,
 	});
 }
 
-export async function updateItem() {
-	/**
-	 * TODO: Fill this out so that it uses the correct Firestore function
-	 * to update an existing item. You'll need to figure out what arguments
-	 * this function must accept!
-	 */
+export async function updateItem(listId, key, checkedState) {
+	const docRef = doc(db, listId, key);
+	return getDoc(docRef).then((doc) => {
+		const totalPurchases = doc.data().totalPurchases;
+		const newTotalPurchases = checkedState
+			? totalPurchases + 1
+			: totalPurchases;
+		const newDateLastPurchased = checkedState
+			? new Date()
+			: doc.data().dateLastPurchased;
+		updateDoc(docRef, {
+			totalPurchases: newTotalPurchases,
+			dateLastPurchased: newDateLastPurchased,
+			checked: checkedState,
+		});
+	});
 }
 
 export async function deleteItem() {
