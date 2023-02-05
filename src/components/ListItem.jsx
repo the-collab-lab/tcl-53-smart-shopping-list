@@ -17,17 +17,20 @@ export function ListItem({ name, listToken, itemId, data }) {
 		return true;
 	};
 
+	const switchState = () => {
+		setCheckedState(!data.checked);
+		updateItem(listToken, itemId, !data.checked);
+	};
+
 	const handleChange = () => {
 		if (checkTimePast() || data.checked === false) {
-			setCheckedState(!data.checked);
-			updateItem(listToken, itemId, !data.checked);
+			switchState();
 		}
 	};
 
 	useEffect(function unCheckAfterTime() {
 		if (checkTimePast() && data.checked === true) {
-			setCheckedState(!data.checked);
-			updateItem(listToken, itemId, !data.checked);
+			switchState();
 		}
 	});
 
