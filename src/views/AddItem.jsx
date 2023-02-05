@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { addItem } from '../api/firebase';
 
 export function AddItem({ listToken }) {
+	//add - alert for invalid-item
+	
 	const SOON = 7;
 	const KINDA_SOON = 14;
 	const NOT_SOON = 30;
