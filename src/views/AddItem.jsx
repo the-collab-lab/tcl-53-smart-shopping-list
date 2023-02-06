@@ -25,26 +25,28 @@ export function AddItem({ data, listToken }) {
 			return;
 		}
 
-		const transformInput = (itemName) => {
-			const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+		const existsInList = (itemName) => {
+			const ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
 			let transformedInput = [];
 
 			for (let i = 0; i < itemName.length; i++) {
 				let char = itemName[i].toLowerCase();
 
-				if (alphabet.includes(char)) {
+				if (ALPHABET.includes(char)) {
 					transformedInput.push(char);
 				}
 			}
 
-			return transformedInput.join('');
+			const duplicates = data.filter((item) => {
+				return item.name.toLowerCase() === transformedInput.join('');
+			});
+
+			let duplicateExists = duplicates.length > 0;
+
+			return duplicateExists;
 		};
 
-		const duplicates = data.filter((item) => {
-			return item.name.toLowerCase() === transformInput(itemName);
-		});
-
-		if (duplicates.length > 0) {
+		if (existsInList(itemName)) {
 			alert('This item already exists in your shopping list');
 			return;
 		}
