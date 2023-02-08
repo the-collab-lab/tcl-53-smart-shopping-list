@@ -12,13 +12,8 @@ export function getFutureDate(offset) {
 }
 
 export function getDaysBetweenDates(newDate, oldDate) {
-	console.log(newDate);
-	console.log(oldDate);
-	const newDateToMilliSeconds = newDate.getTime();
-	const oldDateToMilliSeconds = oldDate.getTime();
+	const timeDifference = newDate.getTime() - oldDate.getTime();
 
-	const timeDifference = newDateToMilliSeconds - oldDateToMilliSeconds;
-
-	const daysBetween = Math.ceil(timeDifference / ONE_DAY_IN_MILLISECONDS);
-	return daysBetween;
+	const differenceInDays = Math.ceil(timeDifference / ONE_DAY_IN_MILLISECONDS);
+	return differenceInDays;
 }
