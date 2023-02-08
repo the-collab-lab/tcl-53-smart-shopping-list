@@ -94,19 +94,25 @@ export async function updateItem(listId, key, checkedState) {
 		});
 
 		const currentDate = new Date();
-		const updatedDateNextPurchased = doc.data().dateNextPurchased.toDate();
-		const updatedDateCreated = doc.data().dateCreated.toDate();
+		const updatedDateNextPurchased = new Date(
+			doc.data().dateNextPurchased.toDate(),
+		);
+		const updatedDateCreated = new Date(doc.data().dateCreated.toDate());
+		const formattedDateLastPurchased = new Date(newDateLastPurchased);
 
 		// gets last estimated interval
 		const previousEstimate =
 			updatedDateNextPurchased === null
 				? getDaysBetweenDates(updatedDateNextPurchased, updatedDateCreated)
-				: getDaysBetweenDates(updatedDateNextPurchased, newDateLastPurchased);
+				: getDaysBetweenDates(
+						updatedDateNextPurchased,
+						formattedDateLastPurchased,
+				  );
 
 		const daysSinceLastPurchase =
 			updatedDateNextPurchased === null
 				? getDaysBetweenDates(currentDate, updatedDateCreated)
-				: getDaysBetweenDates(currentDate, newDateLastPurchased);
+				: getDaysBetweenDates(currentDate, formattedDateLastPurchased);
 
 		const daysTilNextPurchase = calculateEstimate(
 			previousEstimate,
@@ -114,7 +120,6 @@ export async function updateItem(listId, key, checkedState) {
 			newTotalPurchases,
 		);
 
-		console.log(daysTilNextPurchase);
 		updateDoc(docRef, {
 			dateNextPurchased: getFutureDate(daysTilNextPurchase),
 		});
