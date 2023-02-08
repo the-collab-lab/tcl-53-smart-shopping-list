@@ -7,7 +7,7 @@ import {
 	getDoc,
 } from 'firebase/firestore';
 import { db } from './config';
-import { getFutureDate } from '../utils';
+import { getFutureDate, getDaysBetweenDates } from '../utils';
 
 /**
  * Subscribe to changes on a specific list in the Firestore database (listId), and run a callback (handleSuccess) every time a change happens.
@@ -85,11 +85,23 @@ export async function updateItem(listId, key, checkedState) {
 		const newDateLastPurchased = checkedState
 			? new Date()
 			: doc.data().dateLastPurchased;
+
 		updateDoc(docRef, {
 			totalPurchases: newTotalPurchases,
 			dateLastPurchased: newDateLastPurchased,
 			checked: checkedState,
 		});
+
+		const updatedDateNextPurchased = doc.data().dateNextPurchased.toDate();
+		const updatedDateCreated = doc.data().dateCreated.toDate();
+
+		// gets last estimated interval based
+		const estimatedInterval =
+			updatedDateNextPurchased === null
+				? getDaysBetweenDates(updatedDateNextPurchased, updatedDateCreated)
+				: getDaysBetweenDates(updatedDateNextPurchased, newDateLastPurchased);
+
+		console.log(estimatedInterval);
 	});
 }
 
