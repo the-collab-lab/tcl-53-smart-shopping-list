@@ -20,25 +20,16 @@ export function AddItem({ data, listToken }) {
 		e.preventDefault();
 
 		//form validation
-		if (itemName === '') {
+		if (itemName.trim() === '') {
 			alert('Please specify the name of the item');
 			return;
 		}
 
 		const existsInList = (itemName) => {
-			const ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
-			let transformedInput = [];
-
-			for (let i = 0; i < itemName.length; i++) {
-				let char = itemName[i].toLowerCase();
-
-				if (ALPHABET.includes(char)) {
-					transformedInput.push(char);
-				}
-			}
+			const transformedInput = itemName.replace(/[^a-zA-Z]/g, '');
 
 			const duplicates = data.filter((item) => {
-				return item.name.toLowerCase() === transformedInput.join('');
+				return item.name.toLowerCase() === transformedInput.toLowerCase();
 			});
 
 			let duplicateExists = duplicates.length > 0;
