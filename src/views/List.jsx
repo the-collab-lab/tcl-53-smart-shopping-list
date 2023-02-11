@@ -47,6 +47,7 @@ export function List({ data, listToken }) {
 				</form>
 			)}
 			<ul>
+				{/* sort list items by urgency */}
 				{!filteredItems.length && searchedItem ? (
 					<p>No items found.</p>
 				) : (
