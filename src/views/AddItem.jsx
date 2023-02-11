@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { addItem } from '../api/firebase';
 
-export function AddItem({ listToken }) {
+export function AddItem({ data, listToken }) {
+	//add - alert for invalid-item
+
 	const SOON = 7;
 	const KINDA_SOON = 14;
 	const NOT_SOON = 30;
@@ -18,8 +20,25 @@ export function AddItem({ listToken }) {
 		e.preventDefault();
 
 		//form validation
-		if (itemName === '') {
+		if (itemName.trim() === '') {
 			alert('Please specify the name of the item');
+			return;
+		}
+
+		const existsInList = (itemName) => {
+			const transformedInput = itemName.replace(/[^a-zA-Z]/g, '');
+
+			const duplicates = data.filter((item) => {
+				return item.name.toLowerCase() === transformedInput.toLowerCase();
+			});
+
+			let duplicateExists = duplicates.length > 0;
+
+			return duplicateExists;
+		};
+
+		if (existsInList(itemName)) {
+			alert('This item already exists in your shopping list');
 			return;
 		}
 
