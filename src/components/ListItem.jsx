@@ -37,7 +37,7 @@ export function ListItem({ name, listToken, itemId, data }) {
 	const confirmDelete = () => {
 		if (
 			window.confirm(
-				'Do you really want to delete this item from your shopping list?',
+				`Do you really want to delete ${name} from your shopping list?`,
 			)
 		) {
 			deleteItem(listToken, itemId);
@@ -56,7 +56,7 @@ export function ListItem({ name, listToken, itemId, data }) {
 				<li className="ListItem">{name}</li>
 			</label>
 
-			<button>Delete Item</button>
+			<button onClick={confirmDelete}>Delete Item</button>
 		</div>
 	);
 }
