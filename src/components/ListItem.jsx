@@ -1,5 +1,5 @@
 import './ListItem.css';
-import { updateItem } from '../api/firebase';
+import { updateItem, deleteItem } from '../api/firebase';
 import { useEffect, useState } from 'react';
 import { getFutureDate } from '../utils';
 
@@ -33,6 +33,16 @@ export function ListItem({ name, listToken, itemId, data }) {
 			switchState();
 		}
 	});
+
+	const confirmDelete = () => {
+		if (
+			window.confirm(
+				'Do you really want to delete this item from your shopping list?',
+			)
+		) {
+			deleteItem(listToken, itemId);
+		}
+	};
 
 	return (
 		<label htmlFor={name}>
