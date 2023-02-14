@@ -33,10 +33,7 @@ export function comparePurchaseUrgency(data) {
 
 		let urgency;
 
-		//dateNextPurchase (was yesterday) and today;
-
 		if (dateNextPurchased < new Date() && daysTilNextPurchase < 60) {
-			//is the item OverDue?
 			urgency = 0;
 		} else if (daysTilNextPurchase <= 7) {
 			urgency = 1;
