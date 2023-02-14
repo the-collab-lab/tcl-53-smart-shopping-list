@@ -35,14 +35,18 @@ export function ListItem({ name, listToken, itemId, data }) {
 	});
 
 	return (
-		<label htmlFor={name}>
-			<input
-				type="checkbox"
-				id={name}
-				onChange={handleChange}
-				checked={checkedState}
-			/>
-			<li className="ListItem">{name}</li>
-		</label>
+		<div>
+			<label htmlFor={name}>
+				<input
+					type="checkbox"
+					id={name}
+					onChange={handleChange}
+					checked={checkedState}
+				/>
+				<li className="ListItem">{name}</li>
+			</label>
+
+			<button>Delete Item</button>
+		</div>
 	);
 }
