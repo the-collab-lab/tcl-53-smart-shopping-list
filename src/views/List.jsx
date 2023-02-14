@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ListItem } from '../components';
 import { useNavigate } from 'react-router-dom';
+import { comparePurchaseUrgency } from '../utils/dates';
 
 export function List({ data, listToken }) {
 	const [searchedItem, setSearchedItem] = useState('');
@@ -9,7 +10,9 @@ export function List({ data, listToken }) {
 		setSearchedItem(e.target.value);
 	}
 
-	const filteredItems = data.filter((item) =>
+	const orderedData = comparePurchaseUrgency(data);
+
+	const filteredItems = orderedData.filter((item) =>
 		item.name.toLowerCase().includes(searchedItem.toLowerCase()),
 	);
 
@@ -59,6 +62,7 @@ export function List({ data, listToken }) {
 								listToken={listToken}
 								itemId={list.id}
 								data={list}
+								urgency={list.urgency}
 							/>
 						);
 					})
