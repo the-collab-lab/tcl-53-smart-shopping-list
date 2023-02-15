@@ -37,7 +37,7 @@ export function comparePurchaseUrgency(data) {
 			urgency = 0;
 		} else if (daysTilNextPurchase <= 7) {
 			urgency = 1;
-		} else if (daysTilNextPurchase <= 30) {
+		} else if (daysTilNextPurchase < 30) {
 			urgency = 2;
 		} else if (daysTilNextPurchase <= 60) {
 			urgency = 3;
