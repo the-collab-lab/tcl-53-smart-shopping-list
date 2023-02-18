@@ -1,5 +1,5 @@
 import './ListItem.css';
-import { updateItem } from '../api/firebase';
+import { updateItem, deleteItem } from '../api/firebase';
 import { useEffect, useState } from 'react';
 import { getFutureDate } from '../utils';
 
@@ -47,6 +47,16 @@ export function ListItem({ name, listToken, itemId, data, urgency }) {
 		}
 	});
 
+	const confirmDelete = () => {
+		if (
+			window.confirm(
+				`Do you really want to delete ${name} from your shopping list?`,
+			)
+		) {
+			deleteItem(listToken, itemId);
+		}
+	};
+
 	return (
 		<>
 			<li className="ListItem">
@@ -60,7 +70,9 @@ export function ListItem({ name, listToken, itemId, data, urgency }) {
 					{name}
 				</label>
 				<p>{` - ${urgencyString(urgency)}`}</p>
+        <button onClick={confirmDelete}>Delete Item</button>
 			</li>
 		</>
+
 	);
 }
