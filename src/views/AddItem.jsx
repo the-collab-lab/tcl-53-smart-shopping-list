@@ -10,8 +10,9 @@ export function AddItem({ data, listToken }) {
 
 	const [itemName, setItemName] = useState('');
 	const [nextPurchase, setNextPurchase] = useState(0);
-	const [submissionConfirmation, setSubmissionConfirmation] =
-		useState('testing');
+	const [submissionConfirmation, setSubmissionConfirmation] = useState(
+		'TO BE REMOVED: placeholder for confirmation message',
+	);
 
 	const handleChange = (e) => {
 		setItemName(e.target.value);
