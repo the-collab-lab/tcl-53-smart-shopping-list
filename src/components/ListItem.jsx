@@ -70,9 +70,8 @@ export function ListItem({ name, listToken, itemId, data, urgency }) {
 					{name}
 				</label>
 				<p>{` - ${urgencyString(urgency)}`}</p>
-        <button onClick={confirmDelete}>Delete Item</button>
+				<button onClick={confirmDelete}>Delete Item</button>
 			</li>
 		</>
-
 	);
 }
