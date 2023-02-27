@@ -63,6 +63,7 @@ export function NavWithEffect() {
 				</div>
 			</nav>
 			{/* transition screens  to be added*/}
+			<div id="add-item transition"></div>
 		</>
 	);
 }
