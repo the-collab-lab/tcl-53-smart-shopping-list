@@ -78,10 +78,10 @@ export function AddItem({ data, listToken }) {
 
 	return (
 		<>
-			<div className="bg-main text-white w-full h-[80%] absolute bottom-0 md:max-w-md">
-				<div
-					id="image"
-					className="h-60 w-full bg-main-darkest absolute bottom-0"
+			<div className="bg-main text-white w-full h-[80%] absolute bottom-0 md:max-w-md animate-openAddItem overflow-clip z-10">
+				<img
+					src=""
+					className="h-60 w-full bg-main-darkest absolute bottom-0 animate-appear"
 				/>
 				<form
 					onSubmit={submitForm}
@@ -152,7 +152,9 @@ export function AddItem({ data, listToken }) {
 						Add Item
 					</button>
 					{submissionConfirmation && (
-						<p className="italic mt-5 text-center">{submissionConfirmation}</p>
+						<p className="italic mt-5 text-center max-w-xs">
+							{submissionConfirmation}
+						</p>
 					)}
 				</form>
 			</div>
