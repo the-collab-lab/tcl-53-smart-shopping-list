@@ -52,11 +52,11 @@ export function List({ data, listToken }) {
 					)}
 				</form>
 			)}
-			<ul>
+			<ul className="my-10 mx-auto max-w-xs relative">
 				{!filteredItems.length && searchedItem ? (
 					<p>No items found.</p>
 				) : (
-					filteredItems.map((list) => {
+					filteredItems.map((list, index) => {
 						return (
 							<ListItem
 								name={list.name}
@@ -65,6 +65,8 @@ export function List({ data, listToken }) {
 								itemId={list.id}
 								data={list}
 								urgency={list.urgency}
+								listLength={data.length}
+								index={index}
 							/>
 						);
 					})
