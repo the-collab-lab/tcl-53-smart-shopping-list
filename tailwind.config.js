@@ -18,6 +18,36 @@ module.exports = {
 				'main-dark': '#E2DC48',
 				'main-darkest': '#38663F',
 			},
+			keyframes: {
+				rotateButton: {
+					'0%': { transform: 'rotate(0deg)' },
+					'99%': { transform: 'rotate(45deg)' },
+					'100%': { transform: 'rotate(45deg)' },
+				},
+				rotateOutButton: {
+					'0%': { transform: 'rotate(45deg)' },
+					'100%': { transform: 'rotate(0deg)' },
+				},
+				closeAddItem: {
+					'0%': { height: '80%' },
+					'100%': { height: '0' },
+				},
+				closePanel: {
+					'0%': { height: '100vh' },
+					'100%': { height: '0' },
+				},
+				appear: {
+					'0%': { opacity: '0' },
+					'100%': { opacity: '1' },
+				},
+			},
+			animation: {
+				rotateButton: 'rotateButton 2s ease-out forwards',
+				rotateOutButton: 'rotateOutButton 2s ease-out forwards',
+				closeAddItem: 'closeAddItem 2s ease-out forwards',
+				closePanel: 'closePanel 2s ease-out forwards',
+				appear: 'appear 2s ease-out forwards',
+			},
 		},
 	},
 	plugins: [],

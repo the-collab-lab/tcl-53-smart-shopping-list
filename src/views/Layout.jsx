@@ -14,7 +14,7 @@ import './Layout.css';
 export function Layout() {
 	return (
 		<>
-			<div className="Layout h-screen md:max-w-md md:mx-auto">
+			<div className="Layout h-screen md:max-w-md md:mx-auto relative">
 				<header className="Layout-header">
 					<h1>Smart shopping list</h1>
 				</header>
