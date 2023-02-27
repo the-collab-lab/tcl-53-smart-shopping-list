@@ -40,8 +40,13 @@ module.exports = {
 					'0%': { height: '100vh' },
 					'100%': { height: '20%' },
 				},
+				openAddItem: {
+					'0%': { height: '0' },
+					'100%': { height: '80%' },
+				},
 				appear: {
 					'0%': { opacity: '0' },
+					'50%': { opacity: '0' },
 					'100%': { opacity: '1' },
 				},
 			},
@@ -49,6 +54,7 @@ module.exports = {
 				rotateButton: 'rotateButton 2s ease-out forwards',
 				rotateOutButton: 'rotateOutButton 2s ease-out forwards',
 				closeAddItem: 'closeAddItem 2s ease-out forwards',
+				openAddItem: 'openAddItem 2s ease-out forwards',
 				closePanel: 'closePanel 2s ease-out forwards',
 				openPanel: 'openPanel 2s ease-out forwards',
 				appear: 'appear 2s ease-out forwards',

@@ -26,7 +26,7 @@ export function NavWithEffect() {
 
 			{/* Navigation for Home page */}
 			<nav className={location.pathname === '/' ? '' : 'hidden'}>
-				<div className="w-full md:max-w-md h-10 bg-main absolute bottom-0">
+				<div className="w-full max-w-md h-10 bg-main absolute bottom-0">
 					<NavLink to="" className="Nav-link w-fit h-fit mx-auto grid">
 						{`Learn how Shroomy works >>`}
 					</NavLink>
@@ -42,7 +42,7 @@ export function NavWithEffect() {
 				}
 			>
 				<div className="h-[20%] relative">
-					<div className="w-full md:max-w-md h-20 bg-main rounded-t-3xl shadow-[0_-4px_4px_rgba(0,0,0,0.5)] absolute bottom-0">
+					<div className="w-full max-w-md h-20 bg-main rounded-t-3xl shadow-[0_-4px_4px_rgba(0,0,0,0.5)] absolute bottom-0">
 						<NavLink
 							to="/add-item"
 							className="Nav-link w-fit h-fit mx-auto grid text-white uppercase text-center font-bold gap-3 justify-items-center"
@@ -63,12 +63,15 @@ export function NavWithEffect() {
 			<nav
 				className={
 					location.pathname === '/add-item'
-						? 'md:max-w-md absolute top-0 w-full bg-black/[0.5] animate-openPanel'
+						? 'md:max-w-md absolute top-0 w-full animate-openPanel'
 						: 'hidden'
 				}
 			>
-				<div className="w-full md:max-w-md h-20 bg-main absolute bottom-0 rounded-t-3xl shadow-[0_-4px_4px_rgba(0,0,0,0.5)]">
-					<NavLink to="/list" className="Nav-link w-fit h-fit mx-auto grid">
+				<div className="w-full md:max-w-md h-20 bg-main absolute bottom-0 rounded-t-3xl shadow-[0_-4px_4px_rgba(0,0,0,0.5)] z-10">
+					<NavLink
+						to="/list"
+						className="Nav-link w-fit h-fit mx-auto grid z-10"
+					>
 						<FontAwesomeIcon
 							icon={faPlus}
 							transform="shrink-3"
@@ -76,6 +79,10 @@ export function NavWithEffect() {
 						/>
 					</NavLink>
 				</div>
+				<NavLink
+					to="/list"
+					className="bg-black/[0.5] h-screen w-screen fixed top-0 left-0 z-[1]"
+				/>
 			</nav>
 		</>
 	);
