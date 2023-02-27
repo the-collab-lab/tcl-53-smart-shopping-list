@@ -24,6 +24,9 @@ export function List({ data, listToken }) {
 
 	return (
 		<>
+			{/* The height of the green section of the navigation tab is: h-20 (5rem);
+		The button is sticking out by -mt-6 (1.5rem);
+		You'll need 6.5rem of empty space at the bottom of your page so that the user can see their entire list.  */}
 			<p>
 				Hello from the <code>/list</code> page!
 			</p>
