@@ -152,7 +152,7 @@ export function AddItem({ data, listToken }) {
 						Add Item
 					</button>
 					{submissionConfirmation && (
-						<p className="italic mt-5">{submissionConfirmation}</p>
+						<p className="italic mt-5 text-center">{submissionConfirmation}</p>
 					)}
 				</form>
 			</div>

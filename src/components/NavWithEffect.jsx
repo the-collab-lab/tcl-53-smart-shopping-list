@@ -16,6 +16,7 @@ export function NavWithEffect() {
 
 	return (
 		<>
+			{/* previous navlinks */}
 			{/* <nav className={`hidden`}>
                 <p>
                     This will be the lower tab and transition effect. It replaces the
@@ -34,7 +35,7 @@ export function NavWithEffect() {
 			<nav
 				className={
 					location.pathname === '/add-item'
-						? 'md:max-w-md absolute h-[20%] top-0 w-full bg-black/[0.5] overflow-clip'
+						? 'md:max-w-md absolute h-[20%] top-0 w-full bg-black/[0.5]'
 						: 'hidden'
 				}
 			>
@@ -43,19 +44,23 @@ export function NavWithEffect() {
 						<FontAwesomeIcon
 							icon={faPlus}
 							transform="shrink-3 rotate-45"
-							className="align-self-center text-6xl h-16 w-16 drop-shadow-sm bg-main-darkest rounded-full border text-white -mt-8"
+							className="pl-0.5 text-6xl aspect-square shadow-[0_4px_4px_rgba(0,0,0,0.5)] bg-main-darkest rounded-full border text-white -mt-8"
 						/>
 					</NavLink>
 				</div>
 			</nav>
 			<nav className={location.pathname === '/list' ? '' : 'hidden'}>
 				<div className="w-full md:max-w-md h-20 bg-main absolute bottom-0 rounded-t-3xl shadow-[0_-4px_4px_rgba(0,0,0,0.5)]">
-					<NavLink to="/add-item" className="Nav-link w-fit h-fit mx-auto grid">
+					<NavLink
+						to="/add-item"
+						className="Nav-link w-fit h-fit mx-auto grid text-white uppercase text-center font-bold gap-3 justify-items-center"
+					>
 						<FontAwesomeIcon
 							icon={faPlus}
 							transform="shrink-3 "
-							className="align-self-center text-6xl h-16 w-16 drop-shadow-sm bg-main-darkest rounded-full border text-white -mt-8"
+							className="pl-0.5 text-6xl aspect-square shadow-[0_4px_4px_rgba(0,0,0,0.5)] bg-main-darkest rounded-full border text-white -mt-8"
 						/>
+						<p>Add new item</p>
 					</NavLink>
 				</div>
 			</nav>
@@ -66,6 +71,7 @@ export function NavWithEffect() {
 					</NavLink>
 				</div>
 			</nav>
+			{/* transition screens */}
 		</>
 	);
 }
