@@ -49,6 +49,10 @@ module.exports = {
 					'50%': { opacity: '0' },
 					'100%': { opacity: '1' },
 				},
+				slideUp: {
+					'0%': { transform: 'translateY(100%)' },
+					'100%': { transform: 'translateY(0%)' },
+				},
 			},
 			animation: {
 				rotateButton: 'rotateButton 2s ease-out forwards',
@@ -58,6 +62,7 @@ module.exports = {
 				closePanel: 'closePanel 2s ease-out forwards',
 				openPanel: 'openPanel 2s ease-out forwards',
 				appear: 'appear 2s ease-out forwards',
+				slideUp: 'slideUp 2s ease-out forwards',
 			},
 		},
 	},
