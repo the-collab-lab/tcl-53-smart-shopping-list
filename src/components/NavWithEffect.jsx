@@ -1,29 +1,14 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 
 export function NavWithEffect() {
 	const location = useLocation();
+	const [animate, setAnimate] = useState(false);
 
 	return (
 		<>
-			{/* previous navlinks */}
-			{/* <nav className={`hidden`}>
-                    <p>
-                        This will be the lower tab and transition effect. It replaces the
-                        navigation bar & links.
-                    </p>
-                    <NavLink to="/" className="Nav-link">
-                        Home
-                    </NavLink>
-                    <NavLink to="/list" className="Nav-link">
-                        List
-                    </NavLink>
-                    <NavLink to="/add-item" className="Nav-link">
-                        Add Item
-                    </NavLink>
-                </nav> */}
-
 			{/* Navigation for Home page */}
 			<nav className={location.pathname === '/' ? '' : 'hidden'}>
 				<div className="w-full max-w-md h-10 bg-main absolute bottom-0">
@@ -37,7 +22,9 @@ export function NavWithEffect() {
 			<nav
 				className={
 					location.pathname === '/list'
-						? ' place-content-end flex flex-col w-full max-w-md fixed bottom-0 animate-closePanel'
+						? `place-content-end flex flex-col w-full max-w-md fixed bottom-0 ${
+								animate && 'animate-closePanel'
+						  }`
 						: 'hidden'
 				}
 			>
@@ -50,9 +37,11 @@ export function NavWithEffect() {
 							<FontAwesomeIcon
 								icon={faPlus}
 								transform="shrink-3"
-								className="animate-rotateOutButton pl-0.5 text-6xl aspect-square shadow-[0_4px_4px_rgba(0,0,0,0.5)] bg-main-darkest rounded-full border text-white -mt-8"
+								className={`${
+									animate && 'animate-rotateOutButton'
+								} pl-0.5 text-6xl aspect-square shadow-[0_4px_4px_rgba(0,0,0,0.5)] bg-main-darkest rounded-full border text-white -mt-8`}
 							/>
-							<p className="animate-appear">Add new item</p>
+							<p className={animate && 'animate-appear'}>Add new item</p>
 						</NavLink>
 					</div>
 				</div>
@@ -71,6 +60,7 @@ export function NavWithEffect() {
 					<NavLink
 						to="/list"
 						className="Nav-link w-fit h-fit mx-auto grid z-10"
+						onClick={() => setAnimate(true)}
 					>
 						<FontAwesomeIcon
 							icon={faPlus}
@@ -82,6 +72,7 @@ export function NavWithEffect() {
 				<NavLink
 					to="/list"
 					className="bg-black/[0.5] h-screen w-screen fixed top-0 left-0 z-[1]"
+					onClick={() => setAnimate(true)}
 				/>
 			</nav>
 		</>
