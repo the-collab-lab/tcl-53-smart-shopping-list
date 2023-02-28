@@ -68,21 +68,36 @@
 	width: 120px;
 	visibility: hidden;
 	position: absolute;
-	top: 25px;
 	z-index: 2;
 	border-radius: 10px;
 	padding: 6px 0;
+}
+
+.tooltiptext.icon {
+	top: 25px;
+}
+
+.tooltiptext.token {
+	top: -40px;
 }
 
 .tooltiptext::before {
 	background-color: #192733;
 	content: '';
 	position: absolute;
-	top: -5%;
-	left: 45%;
 	z-index: 1;
 	transform: rotate(45deg);
 	padding: 5px;
+}
+
+.tooltiptext.icon::before {
+	top: -5%;
+	left: 45%;
+}
+
+.tooltiptext.token::before {
+	top: 90%;
+	left: 45%;
 }
 
 .tooltip:hover .tooltiptext {

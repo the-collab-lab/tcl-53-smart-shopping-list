@@ -17,9 +17,20 @@ import { useState } from 'react';
 
 export function Layout({ data, listToken }) {
 	const [showListToken, setShowListToken] = useState(false);
+	const [copiedToken, setCopiedToken] = useState(false);
 
 	function toggleListToken() {
 		setShowListToken((prevState) => !prevState);
+	}
+
+	function copyTokenToClipboard() {
+		window.navigator.clipboard.writeText(listToken);
+		setCopiedToken(true);
+
+		setTimeout(() => {
+			setShowListToken(false);
+			setCopiedToken(false);
+		}, 2000);
 	}
 
 	return (
@@ -38,7 +49,7 @@ export function Layout({ data, listToken }) {
 									icon={faArrowUpFromBracket}
 									className="h-5 hover:text-main"
 								></FontAwesomeIcon>
-								<span className="tooltiptext mt-1">Share with others</span>
+								<span className="tooltiptext icon mt-1">Share with others</span>
 							</button>
 						</div>
 						<p className="text-center mt-4">
@@ -58,9 +69,19 @@ export function Layout({ data, listToken }) {
 						{showListToken && (
 							<div className="flex flex-col items-center gap-2 mt-2 z-0">
 								<p className="text-sm">Your unique token:</p>
-								<span className="bg-main-light text-sm cursor-pointer flex justify-center rounded-3xl py-2 px-6 tooltip">
+								<button
+									className="bg-main-light text-sm cursor-pointer flex justify-center rounded-3xl py-2 px-6 tooltip"
+									onClick={copyTokenToClipboard}
+									onKeyDown={copyTokenToClipboard}
+								>
 									{listToken}
-								</span>
+									<span className="text-xs px-4 mb-6 tooltiptext token">
+										Click to copy to clipboard
+									</span>
+								</button>
+								{copiedToken && (
+									<p className="text-sm text-main">Copied to clipboard!</p>
+								)}
 							</div>
 						)}
 					</header>
