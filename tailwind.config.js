@@ -12,7 +12,7 @@ module.exports = {
 				soon: '#f78d37',
 				kindaSoon: '#e2b953',
 				notSoon: '#9CB45C',
-				inactive: '#B6B6DA',
+				inactive: '#72AEA3',
 				main: '#9CB45C',
 				'main-light': '#CCD5AA',
 				'main-dark': '#E2DC48',
