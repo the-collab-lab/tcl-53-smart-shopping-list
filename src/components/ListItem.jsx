@@ -129,9 +129,12 @@ export function ListItem({
 							<FontAwesomeIcon icon={faCircleCheck} className="mr-2" />
 						)}
 						{!data.checked && (
-							<FontAwesomeIcon icon={faCircle} className="mr-2" />
+							<FontAwesomeIcon
+								icon={faCircle}
+								className="mr-2 hover:cursor-pointer"
+							/>
 						)}
-						{name}
+						<span className="hover:cursor-pointer">{name}</span>
 					</label>
 
 					<div>
