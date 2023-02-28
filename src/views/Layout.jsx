@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import { NavWithEffect } from '../components/NavWithEffect';
 
 import './Layout.css';
@@ -21,18 +21,9 @@ export function Layout() {
 				<main className="Layout-main">
 					<Outlet />
 				</main>
-				<NavWithEffect />
-				{/* <nav className="Nav">
-					<NavLink to="/" className="Nav-link">
-						Home
-					</NavLink>
-					<NavLink to="/list" className="Nav-link">
-						List
-					</NavLink>
-					<NavLink to="/add-item" className="Nav-link">
-						Add Item
-					</NavLink>
-				</nav> */}
+				<nav>
+					<NavWithEffect />
+				</nav>
 			</div>
 		</>
 	);
