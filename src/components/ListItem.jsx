@@ -43,6 +43,14 @@ export function ListItem({
 		4: 'bg-inactive',
 	};
 
+	const urgencyMushroomsImg = {
+		0: '../img/mushroom-urgency0.png',
+		1: '../img/mushroom-urgency1.png',
+		2: '../img/mushroom-urgency2.png',
+		3: '../img/mushroom-urgency3.png',
+		4: '../img/mushroom-urgency4.png',
+	};
+
 	const listItemStyles = {
 		'top-style':
 			'shadow-[0_4px_0_white] rounded-br-3xl rounded-tl-3xl rounded-tr-lg py-4',
@@ -134,7 +142,8 @@ export function ListItem({
 								className="mr-2 hover:cursor-pointer"
 							/>
 						)}
-						<span className="hover:cursor-pointer">{name}</span>
+						<span className="mr-2 hover:cursor-pointer">{name}</span>
+						<img src={urgencyMushroomsImg[urgency]} className="inline-block" />
 					</label>
 
 					<div className="flex gap-1.5">
