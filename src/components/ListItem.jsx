@@ -151,7 +151,7 @@ export function ListItem({
 				</div>
 
 				{detailsOpen && (
-					<div className="flex flex-col justify-between max-w-xs ">
+					<div className="flex flex-col justify-between max-w-xs pl-7">
 						<p>
 							Purchases:{' '}
 							<span className="font-bold">{data.totalPurchases}</span>
