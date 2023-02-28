@@ -60,3 +60,36 @@
 	text-decoration-thickness: 0.22em;
 	text-underline-offset: 0.1em;
 } */
+
+.tooltiptext {
+	color: white;
+	background-color: #192733;
+	font-size: 12px;
+	width: 120px;
+	visibility: hidden;
+	position: absolute;
+	top: 25px;
+	z-index: 2;
+	border-radius: 10px;
+	padding: 6px 0;
+}
+
+.tooltiptext::before {
+	background-color: #192733;
+	content: '';
+	position: absolute;
+	top: -5%;
+	left: 45%;
+	z-index: 1;
+	transform: rotate(45deg);
+	padding: 5px;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+
+.tooltip {
+	position: relative;
+	text-align: center;
+}
