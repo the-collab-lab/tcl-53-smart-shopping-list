@@ -53,6 +53,14 @@ module.exports = {
 					'0%': { transform: 'translateY(100%)' },
 					'100%': { transform: 'translateY(0%)' },
 				},
+				shiftLeft: {
+					'0%': { transform: 'translate(0%)' },
+					'100%': { transform: 'translate(-100%)' },
+				},
+				shiftRight: {
+					'0%': { transform: 'translate(100%)' },
+					'100%': { transform: 'translate(0%)' },
+				},
 			},
 			animation: {
 				rotateButton: 'rotateButton 2s ease-out forwards',
@@ -62,7 +70,7 @@ module.exports = {
 				closePanel: 'closePanel 2s ease-out forwards',
 				openPanel: 'openPanel 2s ease-out forwards',
 				appear: 'appear 2s ease-out forwards',
-				slideUp: 'slideUp 2s ease-out forwards',
+				slideUp: 'slideUp 1s ease-out forwards',
 			},
 		},
 	},

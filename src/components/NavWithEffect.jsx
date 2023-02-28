@@ -13,7 +13,7 @@ export function NavWithEffect() {
 			<div
 				className={`${
 					location.pathname !== '/' && 'hidden'
-				} w-full max-w-md h-10 bg-main absolute bottom-0 grid place-content-center`}
+				} shadow-[0_-4px_4px_rgba(0,0,0,0.5)] w-full max-w-md h-10 bg-main absolute bottom-0 grid place-content-center`}
 			>
 				<NavLink to="/about" className="Nav-link ">
 					<p className="text-center text-white font-bold">{`Learn how Shroomy works >>`}</p>
@@ -21,15 +21,18 @@ export function NavWithEffect() {
 			</div>
 
 			{/* Navigation for About page */}
-			{/* <div
+			<div
 				className={`${
 					location.pathname !== '/about' && 'hidden'
-				} w-full max-w-md h-10 bg-main absolute bottom-0 grid place-content-center`}
+				} absolute bottom-10 w-full max-w-md bg-transparent grid place-content-center`}
 			>
-				<NavLink to="/" className="Nav-link ">
-					<p className="text-center text-white font-bold">{`Get Started`}</p>
+				<NavLink
+					to="/"
+					className="Nav-link shadow-[4px_4px_4px_rgba(0,0,0,0.5)] h-10 bg-main rounded-full px-10 grid place-content-center animate-slideUp"
+				>
+					<p className="text-center text-white font-bold uppercase">{`Get Started`}</p>
 				</NavLink>
-			</div> */}
+			</div>
 
 			{/* Navigation for List page */}
 			<div
