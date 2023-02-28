@@ -137,7 +137,7 @@ export function ListItem({
 						<span className="hover:cursor-pointer">{name}</span>
 					</label>
 
-					<div>
+					<div className="flex gap-1.5">
 						<button onClick={() => setDetailsOpen(!detailsOpen)}>
 							{detailsOpen && <FontAwesomeIcon icon={faCircleChevronUp} />}
 
