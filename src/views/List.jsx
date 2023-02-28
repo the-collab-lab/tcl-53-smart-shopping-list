@@ -52,7 +52,7 @@ export function List({ data, listToken }) {
 					)}
 				</form>
 			)}
-			<ul className="my-10 mx-auto max-w-xs relative">
+			<ul className="my-10 mx-auto max-w-xs">
 				{!filteredItems.length && searchedItem ? (
 					<p>No items found.</p>
 				) : (

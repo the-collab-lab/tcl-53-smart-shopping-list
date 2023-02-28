@@ -2,7 +2,7 @@ import './ListItem.css';
 import { updateItem, deleteItem } from '../api/firebase';
 import { useEffect, useState } from 'react';
 import { getFutureDate } from '../utils';
-import classNames from 'classnames';
+// the classname package/module isn't necessary
 
 export function ListItem({
 	name,
@@ -39,9 +39,9 @@ export function ListItem({
 
 	const listItemStyles = {
 		'top-style':
-			'shadow-[0_4px_0_white] rounded-br-3xl relative rounded-tl-3xl rounded-tr-lg ',
-		'middle-style': 'shadow-[0_4px_0_white] rounded-br-3xl relative -mt-6',
-		'bottom-style': '-mt-6 rounded-b-3xl',
+			'shadow-[0_4px_0_white] rounded-br-3xl rounded-tl-3xl rounded-tr-lg',
+		'middle-style': 'shadow-[0_4px_0_white] rounded-br-3xl -mt-6 pt-6', //when editing the items, we have to add pt-6 to compensate for the -mt-6.
+		'bottom-style': '-mt-6 rounded-b-3xl pt-6', //when editing the items, we have to add pt-6 to compensate for the -mt-6.
 	};
 
 	const checkTimePast = () => {
@@ -87,16 +87,18 @@ export function ListItem({
 	return (
 		<>
 			<li
-				className={classNames(
-					'w-full h-28 isolate',
-					`z-[${+listLength - index - 1}]`,
-					urgencyColors[urgency],
-					index === 0
-						? listItemStyles['top-style']
-						: index === listLength - 1
-						? listItemStyles['bottom-style']
-						: listItemStyles['middle-style'],
-				)}
+				style={{ zIndex: String(listLength - index - 1) }} //the z-index was not being applied with Tailwind. so I did an inline style
+				className={`w-full text-white relative ${
+					'' /* You can continue adding styling that applies to every item here */
+				}
+					${urgencyColors[urgency]}
+					${
+						index === 0
+							? listItemStyles['top-style']
+							: index === listLength - 1
+							? listItemStyles['bottom-style']
+							: listItemStyles['middle-style']
+					}`}
 			>
 				<label htmlFor={name}>
 					<input
