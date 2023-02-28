@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowUpFromBracket } from '@fortawesome/free-solid-svg-icons';
 
 import './Layout.css';
+import { useState } from 'react';
 
 /**
  * TODO: The links defined in this file don't work!
@@ -15,6 +16,12 @@ import './Layout.css';
  */
 
 export function Layout({ data, listToken }) {
+	const [showListToken, setShowListToken] = useState(false);
+
+	function toggleListToken() {
+		setShowListToken((prevState) => !prevState);
+	}
+
 	return (
 		<>
 			<div className="h-screen md:max-w-md md:mx-auto">
@@ -23,7 +30,10 @@ export function Layout({ data, listToken }) {
 						<div className="flex items-center gap-4">
 							<img src="/img/logo.svg" alt="Shroomy logo" className="w-10" />
 							<h1 className="font-logo text-3xl mr-auto">Shroomy</h1>
-							<button className="tooltip flex justify-center">
+							<button
+								className="tooltip flex justify-center"
+								onClick={toggleListToken}
+							>
 								<FontAwesomeIcon
 									icon={faArrowUpFromBracket}
 									className="h-5 hover:text-main"
@@ -37,20 +47,22 @@ export function Layout({ data, listToken }) {
 							in your shopping list
 						</p>
 						<div className="flex justify-center gap-2 mt-1">
-							<span className="font-bold hover:text-main hover:cursor-pointer">
+							<span className="text-sm font-bold hover:text-main hover:cursor-pointer">
 								Show all item details
 							</span>
 							<div>|</div>
-							<Link to="#" className="font-bold hover:text-main">
-								Learn how Shroomy works
+							<Link to="#" className="text-sm font-bold hover:text-main">
+								Learn how Shroomy works &gt;&gt;
 							</Link>
 						</div>
-						<div className="flex flex-col items-center gap-2 mt-2 z-0">
-							<p>Your unique token:</p>
-							<span className="bg-main-light text-sm rounded-3xl py-2 px-6">
-								{listToken}
-							</span>
-						</div>{' '}
+						{showListToken && (
+							<div className="flex flex-col items-center gap-2 mt-2 z-0">
+								<p className="text-sm">Your unique token:</p>
+								<span className="bg-main-light text-sm cursor-pointer flex justify-center rounded-3xl py-2 px-6 tooltip">
+									{listToken}
+								</span>
+							</div>
+						)}
 					</header>
 				)}
 
