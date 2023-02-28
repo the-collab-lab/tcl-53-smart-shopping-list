@@ -2,7 +2,10 @@ import './ListItem.css';
 import { updateItem, deleteItem } from '../api/firebase';
 import { useEffect, useState } from 'react';
 import { getFutureDate } from '../utils';
-// the classname package/module isn't necessary
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 export function ListItem({
 	name,
@@ -14,6 +17,7 @@ export function ListItem({
 	index,
 }) {
 	const [checkedState, setCheckedState] = useState(data.checked);
+	const [detailsOpen, setDetailsOpen] = useState(false);
 
 	const urgencyString = (urgency) => {
 		if (urgency === 0) {
@@ -39,9 +43,9 @@ export function ListItem({
 
 	const listItemStyles = {
 		'top-style':
-			'shadow-[0_4px_0_white] rounded-br-3xl rounded-tl-3xl rounded-tr-lg',
-		'middle-style': 'shadow-[0_4px_0_white] rounded-br-3xl -mt-6 pt-6', //when editing the items, we have to add pt-6 to compensate for the -mt-6.
-		'bottom-style': '-mt-6 rounded-b-3xl pt-6', //when editing the items, we have to add pt-6 to compensate for the -mt-6.
+			'shadow-[0_4px_0_white] rounded-br-3xl rounded-tl-3xl rounded-tr-lg py-4',
+		'middle-style': 'shadow-[0_4px_0_white] rounded-br-3xl -mt-6 pb-4 pt-10', //when editing the items, we have to add pt-6 to compensate for the -mt-6.
+		'bottom-style': '-mt-6 rounded-b-3xl pb-4 pt-10', //when editing the items, we have to add pt-6 to compensate for the -mt-6.
 	};
 
 	const checkTimePast = () => {
@@ -82,13 +86,19 @@ export function ListItem({
 		}
 	};
 
-	const isItemFavorited = true;
+	const computeDate = (secs) => {
+		const output = new Date(secs * 1000).toString().split(' ');
+		return `${output[1]} ${output[2]}`;
+	};
+
+	const lastPurchase = computeDate(data.dateLastPurchased.seconds);
+	const nextPurchase = computeDate(data.dateNextPurchased.seconds);
 
 	return (
 		<>
 			<li
 				style={{ zIndex: String(listLength - index - 1) }} //the z-index was not being applied with Tailwind. so I did an inline style
-				className={`w-full text-white relative ${
+				className={`w-full text-white relative px-4 ${
 					'' /* You can continue adding styling that applies to every item here */
 				}
 					${urgencyColors[urgency]}
@@ -100,20 +110,49 @@ export function ListItem({
 							: listItemStyles['middle-style']
 					}`}
 			>
-				<label htmlFor={name}>
-					<input
-						type="checkbox"
-						id={name}
-						onChange={handleChange}
-						checked={checkedState}
-						className="rounded-full"
-					/>
-					{name}
-				</label>
-				<span>Purchases: {data.totalPurchases}</span>
+				<div className="flex justify-between text-xl">
+					<label htmlFor={name}>
+						<input
+							type="checkbox"
+							id={name}
+							onChange={handleChange}
+							checked={checkedState}
+							className="mr-2"
+						/>
+						{name}
+					</label>
 
-				<p>{` - ${urgencyString(urgency)}`}</p>
-				<button onClick={confirmDelete}>Delete Item</button>
+					<div>
+						<button
+							onClick={() => setDetailsOpen(!detailsOpen)}
+							className="mr-2"
+						>
+							{detailsOpen && <FontAwesomeIcon icon={faCircleChevronUp} />}
+
+							{!detailsOpen && <FontAwesomeIcon icon={faCircleChevronDown} />}
+						</button>
+
+						<button onClick={confirmDelete}>
+							<FontAwesomeIcon icon={faTrashCan} />
+						</button>
+					</div>
+				</div>
+
+				{detailsOpen && (
+					<div className="flex flex-col justify-between max-w-xs ">
+						<p>
+							Purchases:{' '}
+							<span className="font-bold">{data.totalPurchases}</span>
+						</p>
+						<p>
+							Last Purchase: <span className="font-bold">{lastPurchase}</span>
+						</p>
+						<p>
+							Next Purchase: <span className="font-bold">{nextPurchase}</span>
+							{` - ${urgencyString(urgency)}`}
+						</p>
+					</div>
+				)}
 			</li>
 		</>
 	);
