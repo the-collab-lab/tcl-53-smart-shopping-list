@@ -54,8 +54,9 @@ export function ListItem({
 	const listItemStyles = {
 		'top-style':
 			'shadow-[0_4px_0_white] rounded-br-3xl rounded-tl-3xl rounded-tr-lg py-4',
-		'middle-style': 'shadow-[0_4px_0_white] rounded-br-3xl -mt-6 pb-4 pt-10', //when editing the items, we have to add pt-6 to compensate for the -mt-6.
-		'bottom-style': '-mt-6 rounded-b-3xl pb-4 pt-10', //when editing the items, we have to add pt-6 to compensate for the -mt-6.
+		'middle-style': 'shadow-[0_4px_0_white] rounded-br-3xl -mt-6 pb-4 pt-10',
+		'bottom-style': '-mt-6 rounded-b-3xl pb-4 pt-10',
+		unique: 'rounded-full py-4',
 	};
 
 	const checkTimePast = () => {
@@ -98,7 +99,7 @@ export function ListItem({
 
 	const computeDate = (secs) => {
 		const output = new Date(secs * 1000).toString().split(' ');
-		return `${output[1]} ${output[2]}`;
+		return `${output[1]} ${output[2]}, ${output[3]}`;
 	};
 
 	const lastPurchase = data.dateLastPurchased
@@ -111,21 +112,21 @@ export function ListItem({
 	return (
 		<>
 			<li
-				style={{ zIndex: String(listLength - index - 1) }} //the z-index was not being applied with Tailwind. so I did an inline style
-				className={`w-full text-white relative px-4 ${
-					'' /* You can continue adding styling that applies to every item here */
-				}
+				style={{ zIndex: String(listLength - index - 1) }}
+				className={`w-full text-white relative px-4
 					${urgencyColors[urgency]}
 					${
-						index === 0
+						listLength === 1
+							? listItemStyles['unique']
+							: index === 0
 							? listItemStyles['top-style']
 							: index === listLength - 1
 							? listItemStyles['bottom-style']
 							: listItemStyles['middle-style']
 					}`}
 			>
-				<div className="flex justify-between text-xl align-center">
-					<label htmlFor={name}>
+				<div className="flex justify-between align-center">
+					<label htmlFor={name} className="flex">
 						<input
 							type="checkbox"
 							id={name}
@@ -134,43 +135,58 @@ export function ListItem({
 							className="hidden"
 						/>
 						{data.checked && (
-							<FontAwesomeIcon icon={faCircleCheck} className="mr-2" />
+							<FontAwesomeIcon
+								icon={faCircleCheck}
+								className="mr-2 text-xl self-center"
+							/>
 						)}
 						{!data.checked && (
 							<FontAwesomeIcon
 								icon={faCircle}
-								className="mr-2 hover:cursor-pointer"
+								className="mr-2 hover:cursor-pointer text-xl self-center"
 							/>
 						)}
-						<span className="mr-2 hover:cursor-pointer">{name}</span>
-						<img src={urgencyMushroomsImg[urgency]} className="inline-block" />
+						<span className="mr-2 hover:cursor-pointer self-center">
+							{name}
+						</span>
+						<img
+							src={urgencyMushroomsImg[urgency]}
+							className="inline-block h-7 self-center"
+						/>
 					</label>
 
-					<div className="flex gap-1.5">
+					<div>
 						<button onClick={() => setDetailsOpen(!detailsOpen)}>
-							{detailsOpen && <FontAwesomeIcon icon={faCircleChevronUp} />}
+							{detailsOpen && (
+								<FontAwesomeIcon icon={faCircleChevronUp} className="text-xl" />
+							)}
 
-							{!detailsOpen && <FontAwesomeIcon icon={faCircleChevronDown} />}
+							{!detailsOpen && (
+								<FontAwesomeIcon
+									icon={faCircleChevronDown}
+									className="text-xl"
+								/>
+							)}
 						</button>
 
-						<button onClick={confirmDelete} className="ml-2">
+						<button onClick={confirmDelete} className="ml-5 text-xl">
 							<FontAwesomeIcon icon={faTrashCan} />
 						</button>
 					</div>
 				</div>
 
 				{detailsOpen && (
-					<div className="flex flex-col justify-between max-w-xs pl-7">
-						<p>
-							Purchases:{' '}
-							<span className="font-bold">{data.totalPurchases}</span>
-						</p>
-						<p>
-							Last Purchase: <span className="font-bold">{lastPurchase}</span>
-						</p>
+					<div className="flex flex-col justify-between max-w-xs mt-3 ml-7 text-sm">
 						<p>
 							Next Purchase: <span className="font-bold">{nextPurchase}</span>
-							{` - ${urgencyString(urgency)}`}
+							{` (${urgencyString(urgency)})`}
+						</p>
+						<p>
+							Last Purchase: <span className="">{lastPurchase}</span>
+						</p>
+						<p>
+							Total Purchases:{' '}
+							<span className="font-bold">{data.totalPurchases}</span>
 						</p>
 					</div>
 				)}

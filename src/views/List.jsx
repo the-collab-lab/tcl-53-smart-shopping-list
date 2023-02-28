@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ListItem } from '../components';
 import { useNavigate } from 'react-router-dom';
 import { comparePurchaseUrgency } from '../utils/dates';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCircle, faSearch, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 export function List({ data, listToken }) {
 	const [searchedItem, setSearchedItem] = useState('');
@@ -27,32 +29,45 @@ export function List({ data, listToken }) {
 			{/* The height of the green section of the navigation tab is: h-20 (5rem);
 		The button is sticking out by -mt-6 (1.5rem);
 		You'll need 6.5rem of empty space at the bottom of your page so that the user can see their entire list.  */}
-			<p>
-				Hello from the <code>/list</code> page!
-			</p>
 			{!data.length ? (
 				<div>
 					<p>Your shopping list is currently empty.</p>
 					<button onClick={routeToAddItem}>Add your first item</button>
 				</div>
 			) : (
-				<form onSubmit={(e) => e.preventDefault()}>
-					<label htmlFor="search">Filter items</label>
-					<input
-						id="search"
-						type="text"
-						placeholder="Start typing here..."
-						value={searchedItem}
-						onChange={handleChange}
-					/>
-					{searchedItem && (
-						<button type="reset" onClick={() => setSearchedItem('')}>
-							X
-						</button>
-					)}
+				<form
+					onSubmit={(e) => e.preventDefault()}
+					className="mx-5 text-sm grid mt-10"
+				>
+					<label htmlFor="search" className="pl-4">
+						Filter items
+					</label>
+					<div className="bg-[#DDDCE6] rounded-full h-10 px-4 flex place-items-center justify-between gap-0">
+						<div className="flex place-items-center place-content-stretch">
+							<FontAwesomeIcon icon={faSearch} className="text-xl" />
+							<input
+								id="search"
+								type="text"
+								placeholder="Start typing here..."
+								value={searchedItem}
+								onChange={handleChange}
+								className="bg-transparent placeholder:italic ml-4 text-base w-full outline-main"
+							/>
+						</div>
+						{searchedItem && (
+							<button type="reset" onClick={() => setSearchedItem('')}>
+								<FontAwesomeIcon
+									icon={faXmark}
+									mask={faCircle}
+									transform="shrink-2"
+									className="text-2xl"
+								/>
+							</button>
+						)}
+					</div>
 				</form>
 			)}
-			<ul className="my-10 mx-auto max-w-md">
+			<ul className="my-10 mx-5">
 				{!filteredItems.length && searchedItem ? (
 					<p>No items found.</p>
 				) : (
@@ -65,7 +80,7 @@ export function List({ data, listToken }) {
 								itemId={list.id}
 								data={list}
 								urgency={list.urgency}
-								listLength={data.length}
+								listLength={filteredItems.length}
 								index={index}
 							/>
 						);
