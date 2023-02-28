@@ -6,6 +6,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import { faCircleChevronUp } from '@fortawesome/free-solid-svg-icons';
 import { faCircleChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
 export function ListItem({
 	name,
@@ -91,8 +93,12 @@ export function ListItem({
 		return `${output[1]} ${output[2]}`;
 	};
 
-	const lastPurchase = computeDate(data.dateLastPurchased.seconds);
-	const nextPurchase = computeDate(data.dateNextPurchased.seconds);
+	const lastPurchase = data.dateLastPurchased
+		? computeDate(data.dateLastPurchased.seconds)
+		: 'N/A';
+	const nextPurchase = data.dateNextPurchased
+		? computeDate(data.dateNextPurchased.seconds)
+		: 'N/A';
 
 	return (
 		<>
@@ -110,29 +116,32 @@ export function ListItem({
 							: listItemStyles['middle-style']
 					}`}
 			>
-				<div className="flex justify-between text-xl">
+				<div className="flex justify-between text-xl align-center">
 					<label htmlFor={name}>
 						<input
 							type="checkbox"
 							id={name}
 							onChange={handleChange}
 							checked={checkedState}
-							className="mr-2"
+							className="hidden"
 						/>
+						{data.checked && (
+							<FontAwesomeIcon icon={faCircleCheck} className="mr-2" />
+						)}
+						{!data.checked && (
+							<FontAwesomeIcon icon={faCircle} className="mr-2" />
+						)}
 						{name}
 					</label>
 
 					<div>
-						<button
-							onClick={() => setDetailsOpen(!detailsOpen)}
-							className="mr-2"
-						>
+						<button onClick={() => setDetailsOpen(!detailsOpen)}>
 							{detailsOpen && <FontAwesomeIcon icon={faCircleChevronUp} />}
 
 							{!detailsOpen && <FontAwesomeIcon icon={faCircleChevronDown} />}
 						</button>
 
-						<button onClick={confirmDelete}>
+						<button onClick={confirmDelete} className="ml-2">
 							<FontAwesomeIcon icon={faTrashCan} />
 						</button>
 					</div>
