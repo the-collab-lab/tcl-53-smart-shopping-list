@@ -37,7 +37,7 @@ export function Layout({ data, listToken }) {
 							in your shopping list
 						</p>
 						<div className="flex justify-center gap-2 mt-1">
-							<span className="font-bold hover:text-main">
+							<span className="font-bold hover:text-main hover:cursor-pointer">
 								Show all item details
 							</span>
 							<div>|</div>
