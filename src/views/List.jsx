@@ -43,7 +43,7 @@ export function List({ data, listToken }) {
 						Filter items
 					</label>
 					<div className="bg-[#DDDCE6] rounded-full h-10 px-4 flex place-items-center justify-between gap-0">
-						<div className="flex place-items-center place-content-stretch">
+						<div className="flex place-items-center grow">
 							<FontAwesomeIcon icon={faSearch} className="text-xl" />
 							<input
 								id="search"
@@ -51,7 +51,7 @@ export function List({ data, listToken }) {
 								placeholder="Start typing here..."
 								value={searchedItem}
 								onChange={handleChange}
-								className="bg-transparent placeholder:italic ml-4 text-base w-full outline-main"
+								className="bg-transparent placeholder:italic mx-4 text-base w-full outline-main"
 							/>
 						</div>
 						{searchedItem && (
@@ -69,7 +69,7 @@ export function List({ data, listToken }) {
 			)}
 			<ul className="my-10 mx-5">
 				{!filteredItems.length && searchedItem ? (
-					<p>No items found.</p>
+					<p className="ml-7">No items found.</p>
 				) : (
 					filteredItems.map((list, index) => {
 						return (
