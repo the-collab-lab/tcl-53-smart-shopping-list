@@ -10,15 +10,14 @@ export function NavWithEffect() {
 	return (
 		<>
 			{/* Navigation for Home page */}
-			<div
+			<NavLink
+				to="/about"
 				className={`${
 					location.pathname !== '/' && 'hidden'
 				} shadow-[0_-4px_4px_rgba(0,0,0,0.5)] w-full max-w-md h-10 bg-main absolute bottom-0 grid place-content-center hover:animate-bounce`}
 			>
-				<NavLink to="/about" className="Nav-link ">
-					<p className="text-center text-white font-bold">{`Learn how Shroomy works >>`}</p>
-				</NavLink>
-			</div>
+				<p className="text-center text-white font-bold">{`Learn how Shroomy works >>`}</p>
+			</NavLink>
 
 			{/* Navigation for About page */}
 			<div
