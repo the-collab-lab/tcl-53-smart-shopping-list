@@ -1,3 +1,5 @@
+import { faCircle, faCircleDot } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
 import { addItem } from '../api/firebase';
 import { AddItemBackground } from '../components/AddItemBackground';
@@ -64,7 +66,9 @@ export function AddItem({ data, listToken }) {
 
 				// put a note that the form was submitted (and erase after 5 seconds)
 				setSubmissionConfirmation(
-					`${itemName} was added to your shopping list.`,
+					`${
+						itemName[0].toUpperCase() + itemName.slice(1)
+					} was added to your shopping list.`,
 				);
 				setTimeout(setSubmissionConfirmation, 5000);
 			})
@@ -113,8 +117,13 @@ export function AddItem({ data, listToken }) {
 								name="purchase-frequency"
 								checked={nextPurchase === SOON}
 								onChange={(e) => setNextPurchase(SOON)}
-								className={radioStyle}
+								className="hidden"
 							/>
+							{nextPurchase === SOON ? (
+								<FontAwesomeIcon icon={faCircleDot} className={radioStyle} />
+							) : (
+								<FontAwesomeIcon icon={faCircle} className={radioStyle} />
+							)}
 							Soon
 						</label>
 
@@ -125,8 +134,13 @@ export function AddItem({ data, listToken }) {
 								name="purchase-frequency"
 								checked={nextPurchase === KINDA_SOON}
 								onChange={(e) => setNextPurchase(KINDA_SOON)}
-								className={radioStyle}
+								className="hidden"
 							/>
+							{nextPurchase === KINDA_SOON ? (
+								<FontAwesomeIcon icon={faCircleDot} className={radioStyle} />
+							) : (
+								<FontAwesomeIcon icon={faCircle} className={radioStyle} />
+							)}
 							Kinda Soon
 						</label>
 
@@ -137,15 +151,20 @@ export function AddItem({ data, listToken }) {
 								name="purchase-frequency"
 								checked={nextPurchase === NOT_SOON}
 								onChange={(e) => setNextPurchase(NOT_SOON)}
-								className={radioStyle}
+								className="hidden"
 							/>
+							{nextPurchase === NOT_SOON ? (
+								<FontAwesomeIcon icon={faCircleDot} className={radioStyle} />
+							) : (
+								<FontAwesomeIcon icon={faCircle} className={radioStyle} />
+							)}
 							Not Soon
 						</label>
 					</fieldset>
 
 					<button
 						type="submit"
-						className="bg-white text-main rounded-full p-2 w-44 mt-10 shadow-[0_4px_4px_rgba(0,0,0,0.4)]"
+						className="bg-white text-main rounded-full p-2 w-44 mt-10 shadow-[0_4px_4px_rgba(0,0,0,0.4)] hover:scale-105"
 					>
 						Add Item
 					</button>
