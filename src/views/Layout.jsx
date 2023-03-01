@@ -73,7 +73,10 @@ export function Layout({ data, listToken }) {
 										Show all item details
 									</span>
 									<div>|</div>
-									<Link to="#" className="text-sm font-bold hover:text-main">
+									<Link
+										to="/about"
+										className="text-sm font-bold hover:text-main"
+									>
 										Learn how Shroomy works &gt;&gt;
 									</Link>
 								</div>
