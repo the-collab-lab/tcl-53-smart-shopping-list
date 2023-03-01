@@ -67,7 +67,7 @@ export function List({ data, listToken }) {
 					</div>
 				</form>
 			)}
-			<ul className="my-10 mx-5">
+			<ul className="my-10 mx-5 pb-36">
 				{!filteredItems.length && searchedItem ? (
 					<p className="ml-7">No items found.</p>
 				) : (
