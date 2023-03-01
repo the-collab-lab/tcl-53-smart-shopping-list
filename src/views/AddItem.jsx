@@ -11,9 +11,7 @@ export function AddItem({ data, listToken }) {
 
 	const [itemName, setItemName] = useState('');
 	const [nextPurchase, setNextPurchase] = useState(0);
-	const [submissionConfirmation, setSubmissionConfirmation] = useState(
-		'TO BE REMOVED: placeholder for confirmation message',
-	);
+	const [submissionConfirmation, setSubmissionConfirmation] = useState('');
 
 	const handleChange = (e) => {
 		setItemName(e.target.value);
@@ -71,7 +69,7 @@ export function AddItem({ data, listToken }) {
 			})
 			.catch((error) => {
 				setSubmissionConfirmation(
-					`There was a problem adding your item, please try again.`,
+					`There was a problem adding your item, please try again later.`,
 				);
 				console.log(error);
 			});
@@ -79,9 +77,9 @@ export function AddItem({ data, listToken }) {
 
 	return (
 		<>
-			<div className="bg-main text-white w-full h-[80%] absolute bottom-0 md:max-w-md animate-openAddItem overflow-clip z-10">
+			<div className="bg-main text-white w-full h-[80%] absolute bottom-0 max-w-md animate-openAddItem overflow-clip z-10">
 				<div className="w-full absolute bottom-0 animate-appear">
-					<AddItemBackground color="#38663F" className="w-full object-fill" />
+					<AddItemBackground className="w-full h-full fill-main-darkest" />
 				</div>
 				<form
 					onSubmit={submitForm}
@@ -94,13 +92,12 @@ export function AddItem({ data, listToken }) {
 					<input
 						type="text"
 						id="itemName"
-						value={itemName ? itemName : undefined}
+						value={itemName}
 						onChange={handleChange}
 						placeholder="start typing..."
 						className="bg-main-light text-main-darkest rounded-full py-1 pl-3 w-[80%] placeholder:text-main placeholder:italic"
 					/>
 
-					{/* <label htmlFor="buyAgain">How soon will you buy this again?</label> */}
 					<fieldset
 						name="buyAgain"
 						className="grid border border-white px-10 py-5 gap-2 my-5 shadow-lg"

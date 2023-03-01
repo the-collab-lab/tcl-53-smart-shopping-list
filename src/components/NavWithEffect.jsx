@@ -35,7 +35,7 @@ export function NavWithEffect() {
 			<nav
 				className={
 					location.pathname === '/add-item'
-						? 'md:max-w-md absolute h-[20%] top-0 w-full bg-black/[0.5]'
+						? 'max-w-md absolute h-[20%] top-0 w-full bg-black/[0.5]'
 						: 'hidden'
 				}
 			>
@@ -50,7 +50,7 @@ export function NavWithEffect() {
 				</div>
 			</nav>
 			<nav className={location.pathname === '/list' ? '' : 'hidden'}>
-				<div className="w-full md:max-w-md h-20 bg-main absolute bottom-0 rounded-t-3xl shadow-[0_-4px_4px_rgba(0,0,0,0.5)]">
+				<div className="w-full max-w-md h-20 bg-main absolute bottom-0 rounded-t-3xl shadow-[0_-4px_4px_rgba(0,0,0,0.5)]">
 					<NavLink
 						to="/add-item"
 						className="Nav-link w-fit h-fit mx-auto grid text-white uppercase text-center font-bold gap-3 justify-items-center"
@@ -65,7 +65,7 @@ export function NavWithEffect() {
 				</div>
 			</nav>
 			<nav className={location.pathname === '/' ? '' : 'hidden'}>
-				<div className="w-full md:max-w-md h-10 bg-main absolute bottom-0">
+				<div className="w-full max-w-md h-10 bg-main absolute bottom-0">
 					<NavLink to="" className="Nav-link w-fit h-fit mx-auto grid">
 						{`Learn how Shroomy works >>`}
 					</NavLink>
