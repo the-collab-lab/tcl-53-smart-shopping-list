@@ -10,12 +10,11 @@ export function About() {
 						alt="Shroomy logo"
 						className="w-20 mt-6 flex justify-center"
 					/>
-					<h1 className="text-xl font-bold flex justify-center">
+					<h1 className="text-3xl font-bold flex justify-center">
 						How Shroomy Works
 					</h1>
-				</section>
 
-				<section className="flex flex-col items-center justify-center">
+					{/* Description one */}
 					<img
 						src="/img/groceries.svg"
 						alt="Shroomy logo"
@@ -30,10 +29,8 @@ export function About() {
 						Shroomy will ask you to estimate how soon you'll need to buy it
 						again.
 					</p>
-				</section>
 
-				<section className="flex flex-col items-center justify-center">
-					{' '}
+					{/* Description two */}
 					<img
 						src="/img/groceries.svg"
 						alt="Shroomy logo"
@@ -44,10 +41,8 @@ export function About() {
 						This will allow Shroomy to remind you when you might need to
 						purchase the same item again.
 					</p>
-				</section>
 
-				<section className="flex flex-col items-center justify-center">
-					{' '}
+					{/* Description three */}
 					<img
 						src="/img/groceries.svg"
 						alt="Shroomy logo"
@@ -60,10 +55,8 @@ export function About() {
 						will automatically be placed at the bottom of your list after 60
 						days.
 					</p>
-				</section>
 
-				<section className="flex flex-col items-center justify-center">
-					{' '}
+					{/* Description four */}
 					<img
 						src="/img/groceries.svg"
 						alt="Shroomy logo"
