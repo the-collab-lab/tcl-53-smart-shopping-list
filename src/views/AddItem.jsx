@@ -4,6 +4,7 @@ import { AddItemBackground } from '../components/AddItemBackground';
 
 export function AddItem({ data, listToken }) {
 	const radioStyle = 'mr-5';
+	const radioLabelStyle = 'cursor-pointer';
 
 	const SOON = 7;
 	const KINDA_SOON = 14;
@@ -105,7 +106,7 @@ export function AddItem({ data, listToken }) {
 						<legend htmlFor="buyAgain" className="text-center w-44 font-bold">
 							How soon will you need to buy this again?
 						</legend>
-						<label htmlFor="soon">
+						<label htmlFor="soon" className={radioLabelStyle}>
 							<input
 								type="radio"
 								id="soon"
@@ -117,7 +118,7 @@ export function AddItem({ data, listToken }) {
 							Soon
 						</label>
 
-						<label htmlFor="kindaSoon">
+						<label htmlFor="kindaSoon" className={radioLabelStyle}>
 							<input
 								type="radio"
 								id="kindaSoon"
@@ -129,7 +130,7 @@ export function AddItem({ data, listToken }) {
 							Kinda Soon
 						</label>
 
-						<label htmlFor="notSoon">
+						<label htmlFor="notSoon" className={radioLabelStyle}>
 							<input
 								type="radio"
 								id="notSoon"
