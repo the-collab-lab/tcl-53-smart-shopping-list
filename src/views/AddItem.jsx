@@ -90,7 +90,7 @@ export function AddItem({ data, listToken }) {
 					onSubmit={submitForm}
 					className="grid justify-items-center w-full mt-10 relative"
 				>
-					<h1 className="font-bold uppercase text-center my-5">add new item</h1>
+					<h1 className="text-2xl tracking-wide font-bold uppercase text-center my-5">add new item</h1>
 					<label htmlFor="itemName" className="text-center">
 						Item Name
 					</label>
