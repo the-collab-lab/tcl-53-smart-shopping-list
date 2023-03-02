@@ -37,7 +37,7 @@ export default function FormModal({
 				<div className="flex items-center gap-6">
 					<button
 						type="submit"
-						className="text-white bg-main-darkest rounded-3xl py-2 px-8 mb-2 hover:bg-white hover:text-main-darkest hover:border-main-darkest hover:border-[1.5px]"
+						className="text-white bg-main-darkest border-[1.5px] border-main-darkest rounded-3xl py-2 px-8 mb-2 hover:bg-white hover:text-main-darkest hover:border-main-darkest hover:border-[1.5px]"
 					>
 						Submit
 					</button>

@@ -66,13 +66,13 @@ export function Home({ listToken, setListToken }) {
 				<div className="flex flex-col items-center gap-6 mt-6">
 					<button
 						onClick={createToken}
-						className="bg-main-darkest text-white rounded-3xl shadow-lg py-2 px-12 hover:bg-white hover:text-main-darkest hover:border-main-darkest hover:border-[1.5px]"
+						className="bg-main-darkest text-white border-[1.5px] border-main-darkest rounded-3xl shadow-[0_4px_4px_rgba(0,0,0,0.4)] py-2 px-12 hover:bg-white hover:text-main-darkest hover:border-main-darkest"
 					>
 						Create a new list
 					</button>
 
 					<button
-						className="bg-white text-main-darkest border-[1.5px] border-main-darkest rounded-3xl shadow-lg py-2 px-12 hover:bg-main-darkest hover:text-white"
+						className="bg-white text-main-darkest border-[1.5px] border-main-darkest rounded-3xl shadow-[0_4px_4px_rgba(0,0,0,0.4)] py-2 px-12 hover:bg-main-darkest hover:text-white"
 						onClick={openForm}
 					>
 						Join Existing List
