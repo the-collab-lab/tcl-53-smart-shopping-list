@@ -6,7 +6,7 @@ export function About() {
 			<div className="p-5 overflow-y-scroll">
 				<section className="flex flex-col items-center justify-center">
 					<img
-						src="/img/groceries.svg"
+						src="/img/logo.svg"
 						alt="Shroomy logo"
 						className="w-20 mt-6 flex justify-center"
 					/>
@@ -17,7 +17,7 @@ export function About() {
 					{/* Description one */}
 					<img
 						src="/img/groceries.svg"
-						alt="Shroomy logo"
+						alt="example of Shroomy shopping list"
 						className="w-20 mt-6 flex justify-center"
 					/>
 					<h2 className="text-lg font-bold">
@@ -33,7 +33,7 @@ export function About() {
 					{/* Description two */}
 					<img
 						src="/img/groceries.svg"
-						alt="Shroomy logo"
+						alt="example of checking items off in shopping list"
 						className="w-20 mt-6 flex justify-center"
 					/>
 					<h2 className="text-lg font-bold">Check items off as you buy</h2>
@@ -45,7 +45,7 @@ export function About() {
 					{/* Description three */}
 					<img
 						src="/img/groceries.svg"
-						alt="Shroomy logo"
+						alt="example of Shroomy shopping list with color coding for item urgency"
 						className="w-20 mt-6 flex justify-center"
 					/>
 					<h2 className="text-lg font-bold">Shroomy adjusts to you</h2>
@@ -59,7 +59,7 @@ export function About() {
 					{/* Description four */}
 					<img
 						src="/img/groceries.svg"
-						alt="Shroomy logo"
+						alt="example of a three word token being input to list"
 						className="w-20 mt-6 flex justify-center"
 					/>
 					<h2 className="text-lg font-bold">Share your list!</h2>
