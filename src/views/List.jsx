@@ -26,12 +26,9 @@ export function List({ data, listToken }) {
 
 	return (
 		<>
-			{/* The height of the green section of the navigation tab is: h-20 (5rem);
-		The button is sticking out by -mt-6 (1.5rem);
-		You'll need 6.5rem of empty space at the bottom of your page so that the user can see their entire list.  */}
 			{!data.length ? (
-				<div className="flex flex-col items-center gap-2">
-					<p className="text-center">Start adding to your list!</p>
+				<div className="flex flex-col items-center gap-2 mt-32">
+					<p className="text-center ">Start adding to your list!</p>
 					<button
 						onClick={routeToAddItem}
 						className="w-fit bg-main-darkest text-white border-[1.5px] border-main-darkest rounded-3xl shadow-[0_4px_4px_rgba(0,0,0,0.4)] py-2 px-12 hover:bg-white hover:text-main-darkest hover:border-main-darkest"
