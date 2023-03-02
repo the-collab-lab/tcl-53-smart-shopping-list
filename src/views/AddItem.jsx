@@ -14,7 +14,7 @@ export function AddItem({ data, listToken }) {
 
 	const [itemName, setItemName] = useState('');
 	const [nextPurchase, setNextPurchase] = useState(0);
-	const [submissionConfirmation, setSubmissionConfirmation] = useState('');
+	const [submissionConfirmation, setSubmissionConfirmation] = useState();
 
 	const handleChange = (e) => {
 		setItemName(e.target.value);
@@ -82,15 +82,17 @@ export function AddItem({ data, listToken }) {
 
 	return (
 		<>
-			<div className="bg-main text-white w-full h-[80%] absolute bottom-0 max-w-md animate-openAddItem overflow-clip z-10">
+			<div className="bg-main text-white w-full h-[83%] absolute bottom-0 max-w-md animate-openAddItem overflow-clip z-10">
 				<div className="w-full absolute bottom-0 animate-appear">
 					<AddItemBackground className="w-full h-full fill-main-darkest" />
 				</div>
 				<form
 					onSubmit={submitForm}
-					className="grid justify-items-center w-full mt-10 relative"
+					className="grid justify-items-center w-full relative pt-5"
 				>
-					<h1 className="text-2xl tracking-wide font-bold uppercase text-center my-5">add new item</h1>
+					<h1 className="text-2xl tracking-wide font-bold uppercase text-center my-10">
+						add new item
+					</h1>
 					<label htmlFor="itemName" className="text-center">
 						Item Name
 					</label>
@@ -169,7 +171,7 @@ export function AddItem({ data, listToken }) {
 						Add Item
 					</button>
 					{submissionConfirmation && (
-						<p className="italic mt-5 text-center max-w-xs">
+						<p className="italic mt-5 p-5 text-center max-w-xs text-sm backdrop-blur rounded-xl bg-main-darkest/[0.7]">
 							{submissionConfirmation}
 						</p>
 					)}
