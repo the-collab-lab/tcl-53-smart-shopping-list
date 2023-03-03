@@ -21,7 +21,7 @@ export function NavWithEffect() {
 			</div>
 
 			{/* Navigation for About page */}
-			{/* <div
+			<div
 				className={`${
 					location.pathname !== '/about' && 'hidden'
 				} absolute bottom-10 w-full max-w-md bg-transparent grid place-content-center`}
@@ -32,7 +32,7 @@ export function NavWithEffect() {
 				>
 					<p className="text-center text-white font-bold uppercase">{`Get Started`}</p>
 				</NavLink>
-			</div> */}
+			</div>
 
 			{/* Navigation for List page */}
 			<div
