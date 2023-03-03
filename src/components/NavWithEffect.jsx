@@ -34,7 +34,7 @@ export function NavWithEffect() {
 					</NavLink>
 					<NavLink
 						to="/"
-						className="Nav-link group-hover:opacity-0 shadow-[4px_4px_4px_rgba(0,0,0,0.5)] h-10 bg-main rounded-full px-10 grid place-content-center animate-slideUp"
+						className="Nav-link group-hover:opacity-0 shadow-[4px_4px_4px_rgba(0,0,0,0.5)] h-10 bg-main-darkest rounded-full px-10 grid place-content-center animate-slideUp"
 					>
 						<p className="text-center text-white font-bold uppercase ">{`Get Started`}</p>
 					</NavLink>
