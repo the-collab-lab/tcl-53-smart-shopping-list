@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { addItem } from '../api/firebase';
 
 export function AddItem({ data, listToken }) {
-	//add - alert for invalid-item
+	const radioStyle = 'mr-5';
 
 	const SOON = 7;
 	const KINDA_SOON = 14;
@@ -10,7 +10,9 @@ export function AddItem({ data, listToken }) {
 
 	const [itemName, setItemName] = useState('');
 	const [nextPurchase, setNextPurchase] = useState(0);
-	const [submissionConfirmation, setSubmissionConfirmation] = useState('');
+	const [submissionConfirmation, setSubmissionConfirmation] = useState(
+		'TO BE REMOVED: placeholder for confirmation message',
+	);
 
 	const handleChange = (e) => {
 		setItemName(e.target.value);
@@ -76,57 +78,86 @@ export function AddItem({ data, listToken }) {
 
 	return (
 		<>
-			<form onSubmit={submitForm}>
-				<label htmlFor="itemName">
-					Item Name
+			<div className="bg-main text-white w-full h-[80%] absolute bottom-0 md:max-w-md animate-openAddItem overflow-clip z-10">
+				<div
+					id="image"
+					className="h-60 w-full bg-main-darkest absolute bottom-0 animate-appear"
+				/>
+				<form
+					onSubmit={submitForm}
+					className="grid justify-items-center w-full mt-10 relative"
+				>
+					<h1 className="font-bold uppercase text-center my-5">add new item</h1>
+					<label htmlFor="itemName" className="text-center">
+						Item Name
+					</label>
 					<input
 						type="text"
 						id="itemName"
-						value={itemName}
+						value={itemName ? itemName : undefined}
 						onChange={handleChange}
+						placeholder="start typing..."
+						className="bg-main-light text-main-darkest rounded-full py-1 pl-3 w-[80%] placeholder:text-main placeholder:italic"
 					/>
-				</label>
 
-				<label htmlFor="buyAgain">How soon will you buy this again?</label>
-				<fieldset name="buyAgain">
-					<label htmlFor="soon">
-						<input
-							type="radio"
-							id="soon"
-							name="purchase-frequency"
-							checked={nextPurchase === SOON}
-							onChange={(e) => setNextPurchase(SOON)}
-						/>
-						Soon
-					</label>
+					{/* <label htmlFor="buyAgain">How soon will you buy this again?</label> */}
+					<fieldset
+						name="buyAgain"
+						className="grid border border-white px-10 py-5 gap-2 my-5 shadow-lg"
+					>
+						<legend htmlFor="buyAgain" className="text-center w-44 font-bold">
+							How soon will you need to buy this again?
+						</legend>
+						<label htmlFor="soon">
+							<input
+								type="radio"
+								id="soon"
+								name="purchase-frequency"
+								checked={nextPurchase === SOON}
+								onChange={(e) => setNextPurchase(SOON)}
+								className={radioStyle}
+							/>
+							Soon
+						</label>
 
-					<label htmlFor="kindaSoon">
-						<input
-							type="radio"
-							id="kindaSoon"
-							name="purchase-frequency"
-							checked={nextPurchase === KINDA_SOON}
-							onChange={(e) => setNextPurchase(KINDA_SOON)}
-						/>
-						Kinda Soon
-					</label>
+						<label htmlFor="kindaSoon">
+							<input
+								type="radio"
+								id="kindaSoon"
+								name="purchase-frequency"
+								checked={nextPurchase === KINDA_SOON}
+								onChange={(e) => setNextPurchase(KINDA_SOON)}
+								className={radioStyle}
+							/>
+							Kinda Soon
+						</label>
 
-					<label htmlFor="notSoon">
-						<input
-							type="radio"
-							id="notSoon"
-							name="purchase-frequency"
-							checked={nextPurchase === NOT_SOON}
-							onChange={(e) => setNextPurchase(NOT_SOON)}
-						/>
-						Not Soon
-					</label>
-				</fieldset>
+						<label htmlFor="notSoon">
+							<input
+								type="radio"
+								id="notSoon"
+								name="purchase-frequency"
+								checked={nextPurchase === NOT_SOON}
+								onChange={(e) => setNextPurchase(NOT_SOON)}
+								className={radioStyle}
+							/>
+							Not Soon
+						</label>
+					</fieldset>
 
-				<button type="submit">Add Item</button>
-			</form>
-
-			{submissionConfirmation && <p>{submissionConfirmation}</p>}
+					<button
+						type="submit"
+						className="bg-white text-main rounded-full p-2 w-44 mt-10 shadow-[0_4px_4px_rgba(0,0,0,0.4)]"
+					>
+						Add Item
+					</button>
+					{submissionConfirmation && (
+						<p className="italic mt-5 text-center max-w-xs">
+							{submissionConfirmation}
+						</p>
+					)}
+				</form>
+			</div>
 		</>
 	);
 }
