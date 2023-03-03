@@ -16,7 +16,7 @@ export default function FormModal({
 			>
 				<FontAwesomeIcon
 					icon={faXmark}
-					className="text-xl self-end cursor-pointer hover:text-main"
+					className="text-xl self-end cursor-pointer hover:text-main -mr-5"
 					onClick={closeForm}
 				></FontAwesomeIcon>
 				<label htmlFor="existingToken" className="text-xl font-bold">
