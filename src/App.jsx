@@ -7,6 +7,7 @@ import { useStateWithStorage } from './utils';
 
 export function App() {
 	const [data, setData] = useState([]);
+	const [allDetailsOpen, setAllDetailsOpen] = useState(false);
 	/**
 	 * Here, we're using a custom hook to create `listToken` and a function
 	 * that can be used to update `listToken` later.
@@ -52,7 +53,13 @@ export function App() {
 				<Routes>
 					<Route
 						path="/"
-						element={<Layout data={data} listToken={listToken} />}
+						element={
+							<Layout
+								data={data}
+								listToken={listToken}
+								setAllDetailsOpen={setAllDetailsOpen}
+							/>
+						}
 					>
 						<Route
 							index
@@ -62,7 +69,13 @@ export function App() {
 						/>
 						<Route
 							path="/list"
-							element={<List data={data} listToken={listToken} />}
+							element={
+								<List
+									data={data}
+									listToken={listToken}
+									allDetailsOpen={allDetailsOpen}
+								/>
+							}
 						/>
 						<Route
 							path="/add-item"
