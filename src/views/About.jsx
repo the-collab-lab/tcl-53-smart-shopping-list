@@ -6,7 +6,7 @@ export function About() {
 				alt="Shroomy logo"
 				className="w-20 mt-6 mx-auto"
 			/>
-			<h1 className="text-3xl font-bold mb-10 mx-auto">How Shroomy Works</h1>
+			<h1 className="text-3xl font-bold mb-16 mx-auto">How Shroomy Works</h1>
 
 			{/* Description one */}
 			<img
@@ -18,7 +18,7 @@ export function About() {
 				Create your own personalized shopping list
 			</h2>
 
-			<p className="mb-10">
+			<p className="mb-14">
 				Add items you regularly buy to your list. When you add a new item,
 				Shroomy will ask you to estimate how soon you'll need to buy it again.
 			</p>
@@ -30,7 +30,7 @@ export function About() {
 				className="w-50 mb-6 mx-auto"
 			/>
 			<h2 className="text-lg font-bold mb-5">Check items off as you buy</h2>
-			<p className="mb-10">
+			<p className="mb-14">
 				This will allow Shroomy to remind you when you might need to purchase
 				the same item again.
 			</p>
@@ -42,7 +42,7 @@ export function About() {
 				className="w-50 mb-6 mx-auto"
 			/>
 			<h2 className="text-lg font-bold mb-5">Shroomy adjusts to you</h2>
-			<p className="mb-10">
+			<p className="mb-14">
 				Shroomy uses your buying history to sort your list and places your most
 				urgent items at the top. If you stop purchasing an item, it will
 				automatically be placed at the bottom of your list after 60 days.
