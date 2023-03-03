@@ -48,12 +48,16 @@ export function Layout({ data, listToken }) {
 								<button
 									className="tooltip flex justify-center"
 									onClick={toggleListToken}
+									aria-describedby="share-button-tooltip"
 								>
 									<FontAwesomeIcon
 										icon={faArrowUpFromBracket}
 										className="h-5 hover:text-main"
 									></FontAwesomeIcon>
-									<span className="tooltiptext icon mt-1">
+									<span
+										className="tooltiptext icon mt-1"
+										id="share-button-tooltip"
+									>
 										Share with others
 									</span>
 								</button>
@@ -107,17 +111,6 @@ export function Layout({ data, listToken }) {
 					<Outlet />
 				</main>
 				<NavWithEffect />
-				{/* <nav className="Nav">
-					<NavLink to="/" className="Nav-link">
-						Home
-					</NavLink>
-					<NavLink to="/list" className="Nav-link">
-						List
-					</NavLink>
-					<NavLink to="/add-item" className="Nav-link">
-						Add Item
-					</NavLink>
-				</nav> */}
 			</div>
 		</>
 	);
