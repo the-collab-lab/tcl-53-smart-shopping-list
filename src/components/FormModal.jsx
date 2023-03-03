@@ -30,7 +30,7 @@ export default function FormModal({
 						value={existingToken}
 						onChange={handleChange}
 						required
-						className="text-base font-normal w-[90%] border-main border-2 mb-4"
+						className="text-base font-normal w-[90%] border-main border-2 mb-4 p-2"
 					/>
 				</label>
 
