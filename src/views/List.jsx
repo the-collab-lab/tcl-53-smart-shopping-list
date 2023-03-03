@@ -5,7 +5,7 @@ import { comparePurchaseUrgency } from '../utils/dates';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faSearch, faXmark } from '@fortawesome/free-solid-svg-icons';
 
-export function List({ data, listToken }) {
+export function List({ data, listToken, allDetailsOpen }) {
 	const [searchedItem, setSearchedItem] = useState('');
 
 	function handleChange(e) {
@@ -84,6 +84,7 @@ export function List({ data, listToken }) {
 								urgency={list.urgency}
 								listLength={filteredItems.length}
 								index={index}
+								allDetailsOpen={allDetailsOpen}
 							/>
 						);
 					})
