@@ -16,9 +16,9 @@ export function About() {
 
 					{/* Description one */}
 					<img
-						src="/img/groceries.svg"
+						src="/img/add-item-example.svg"
 						alt="example of Shroomy shopping list"
-						className="w-20 mt-6 flex justify-center"
+						className="w-50 m-6 flex justify-center"
 					/>
 					<h2 className="text-lg font-bold">
 						Create your own personalized shopping list
@@ -32,9 +32,9 @@ export function About() {
 
 					{/* Description two */}
 					<img
-						src="/img/groceries.svg"
+						src="/img/list-example.svg"
 						alt="example of checking items off in shopping list"
-						className="w-20 mt-6 flex justify-center"
+						className="w-50 m-6 flex justify-center"
 					/>
 					<h2 className="text-lg font-bold">Check items off as you buy</h2>
 					<p>
@@ -44,9 +44,9 @@ export function About() {
 
 					{/* Description three */}
 					<img
-						src="/img/groceries.svg"
+						src="/img/next-purchase-example.svg"
 						alt="example of Shroomy shopping list with color coding for item urgency"
-						className="w-20 mt-6 flex justify-center"
+						className="w-50 m-6 flex justify-center"
 					/>
 					<h2 className="text-lg font-bold">Shroomy adjusts to you</h2>
 					<p>
@@ -58,9 +58,9 @@ export function About() {
 
 					{/* Description four */}
 					<img
-						src="/img/groceries.svg"
+						src="/img/next-purchase-example.svg"
 						alt="example of a three word token being input to list"
-						className="w-20 mt-6 flex justify-center"
+						className="w-50 m-6 flex justify-center"
 					/>
 					<h2 className="text-lg font-bold">Share your list!</h2>
 					<p>
