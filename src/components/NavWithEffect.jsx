@@ -25,20 +25,12 @@ export function NavWithEffect() {
 					location.pathname !== '/about' && 'hidden'
 				} absolute bottom-10 w-full max-w-md bg-transparent grid place-content-center`}
 			>
-				<div className="group">
-					<NavLink
-						to="/"
-						className="Nav-link opacity-0 group-hover:opacity-100 absolute group-hover:scale-105 shadow-[4px_4px_4px_rgba(0,0,0,0.5)] h-10 bg-main rounded-full px-10 grid place-content-center"
-					>
-						<p className="text-center text-white font-bold uppercase ">{`Get Started`}</p>
-					</NavLink>
-					<NavLink
-						to="/"
-						className="Nav-link group-hover:opacity-0 shadow-[4px_4px_4px_rgba(0,0,0,0.5)] h-10 bg-main-darkest rounded-full px-10 grid place-content-center animate-slideUp"
-					>
-						<p className="text-center text-white font-bold uppercase ">{`Get Started`}</p>
-					</NavLink>
-				</div>
+				<NavLink
+					to="/"
+					className="Nav-link border border-main-darkest text-white hover:text-main-darkest hover:bg-white shadow-[4px_4px_4px_rgba(0,0,0,0.5)] h-10 bg-main-darkest rounded-full px-10 grid place-content-center animate-slideUp"
+				>
+					<p className="text-center font-bold uppercase ">{`Get Started`}</p>
+				</NavLink>
 			</div>
 
 			{/* Navigation for List page */}
