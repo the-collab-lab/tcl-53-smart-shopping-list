@@ -1,4 +1,3 @@
-import './Home.css';
 import { generateToken } from '@the-collab-lab/shopping-list-utils';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
