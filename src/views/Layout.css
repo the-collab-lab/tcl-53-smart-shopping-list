@@ -7,6 +7,7 @@
  *
  * @see: https://developer.mozilla.org/en-US/docs/Web/CSS/env
  */
+
 .tooltiptext {
 	color: white;
 	background-color: #192733;
@@ -46,9 +47,8 @@
 	left: 45%;
 }
 
-.tooltip:hover,
-.tooltip:focus,
-.tooltiptext {
+.tooltip:hover .tooltiptext,
+.tooltip:focus .tooltiptext {
 	visibility: visible;
 }
 
