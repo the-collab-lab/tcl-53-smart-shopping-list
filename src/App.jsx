@@ -50,7 +50,10 @@ export function App() {
 		<div className="bg-main-light/[0.4]">
 			<Router>
 				<Routes>
-					<Route path="/" element={<Layout />}>
+					<Route
+						path="/"
+						element={<Layout data={data} listToken={listToken} />}
+					>
 						<Route
 							index
 							element={
@@ -65,7 +68,6 @@ export function App() {
 							path="/add-item"
 							element={<AddItem data={data} listToken={listToken} />}
 						/>
-						<Route path="/about" element={<About />} />
 					</Route>
 				</Routes>
 			</Router>
