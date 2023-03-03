@@ -42,13 +42,17 @@ export function Layout({ data, listToken }) {
 				{listToken && (
 					<header className="h-auto my-8">
 						<div className="flex items-center gap-4">
-							<img src="/img/logo.svg" alt="Shroomy logo" className="w-10" />
+							<img
+								src="/img/logo-header.svg"
+								alt="Shroomy logo"
+								className="w-10"
+							/>
 							<h1 className="font-logo text-3xl mr-auto">Shroomy</h1>
 							{currentPath !== '/about' && (
 								<button
 									className="tooltip flex justify-center"
 									onClick={toggleListToken}
-									aria-describedby="share-button-tooltip"
+									// aria-describedby="share-button-tooltip"
 								>
 									<FontAwesomeIcon
 										icon={faArrowUpFromBracket}
@@ -56,7 +60,7 @@ export function Layout({ data, listToken }) {
 									></FontAwesomeIcon>
 									<span
 										className="tooltiptext icon mt-1"
-										id="share-button-tooltip"
+										// id="share-button-tooltip"
 									>
 										Share with others
 									</span>
