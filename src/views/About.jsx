@@ -1,6 +1,6 @@
 export function About() {
 	return (
-		<section className="p-5 text-center overflow-y-scroll h-screen">
+		<section className="p-10 text-center overflow-y-scroll h-screen">
 			<img
 				src="/img/logo.svg"
 				alt="Shroomy logo"
@@ -14,7 +14,7 @@ export function About() {
 				alt="example of Shroomy shopping list"
 				className="w-50 mb-6 mx-auto"
 			/>
-			<h2 className="text-lg font-bold">
+			<h2 className="text-lg font-bold mb-5">
 				Create your own personalized shopping list
 			</h2>
 
@@ -29,7 +29,7 @@ export function About() {
 				alt="example of checking items off in shopping list"
 				className="w-50 mb-6 mx-auto"
 			/>
-			<h2 className="text-lg font-bold">Check items off as you buy</h2>
+			<h2 className="text-lg font-bold mb-5">Check items off as you buy</h2>
 			<p className="mb-10">
 				This will allow Shroomy to remind you when you might need to purchase
 				the same item again.
@@ -41,7 +41,7 @@ export function About() {
 				alt="example of Shroomy shopping list with color coding for item urgency"
 				className="w-50 mb-6 mx-auto"
 			/>
-			<h2 className="text-lg font-bold">Shroomy adjusts to you</h2>
+			<h2 className="text-lg font-bold mb-5">Shroomy adjusts to you</h2>
 			<p className="mb-10">
 				Shroomy uses your buying history to sort your list and places your most
 				urgent items at the top. If you stop purchasing an item, it will
@@ -50,14 +50,14 @@ export function About() {
 
 			{/* Description four */}
 			<img
-				src="/img/next-purchase-example.svg"
+				src="/img/list-token-example.svg"
 				alt="example of a three word token being input to list"
 				className="w-50 mb-6 mx-auto"
 			/>
-			<h2 className="text-lg font-bold">Share your list!</h2>
-			<p className="mb-32">
+			<h2 className="text-lg font-bold mb-5">Share your list!</h2>
+			<p className="mb-24">
 				You can share the same list with everyone who shops for your household.
-				Simply provide your lists's three word token to your friend or family
+				Simply provide your list's three word token to your friend or family
 				member, and they can use it to join your list from Shroomy's home
 				screen.
 			</p>
