@@ -2,9 +2,24 @@ import './ListItem.css';
 import { updateItem, deleteItem } from '../api/firebase';
 import { useEffect, useState } from 'react';
 import { getFutureDate } from '../utils';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { faCircleChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { faCircle } from '@fortawesome/free-regular-svg-icons';
+import { faCircleCheck } from '@fortawesome/free-solid-svg-icons';
 
-export function ListItem({ name, listToken, itemId, data, urgency }) {
+export function ListItem({
+	name,
+	listToken,
+	itemId,
+	data,
+	urgency,
+	listLength,
+	index,
+}) {
 	const [checkedState, setCheckedState] = useState(data.checked);
+	const [detailsOpen, setDetailsOpen] = useState(false);
 
 	const urgencyString = (urgency) => {
 		if (urgency === 0) {
@@ -19,6 +34,31 @@ export function ListItem({ name, listToken, itemId, data, urgency }) {
 			return 'Inactive';
 		}
 	};
+
+	const urgencyColors = {
+		0: 'bg-overdue',
+		1: 'bg-soon',
+		2: 'bg-kindaSoon',
+		3: 'bg-notSoon',
+		4: 'bg-inactive',
+	};
+
+	const urgencyMushroomsImg = {
+		0: '../img/mushroom-urgency0.png',
+		1: '../img/mushroom-urgency1.png',
+		2: '../img/mushroom-urgency2.png',
+		3: '../img/mushroom-urgency3.png',
+		4: '../img/mushroom-urgency4.png',
+	};
+
+	const listItemStyles = {
+		'top-style':
+			'shadow-[0_4px_0_white] rounded-br-3xl rounded-tl-3xl rounded-tr-lg py-4',
+		'middle-style': 'shadow-[0_4px_0_white] rounded-br-3xl -mt-6 pb-4 pt-10',
+		'bottom-style': '-mt-6 rounded-b-3xl pb-4 pt-10',
+		unique: 'rounded-full py-4',
+	};
+
 	const checkTimePast = () => {
 		if (data.dateLastPurchased !== null) {
 			const yesterday = getFutureDate(-1);
@@ -57,22 +97,100 @@ export function ListItem({ name, listToken, itemId, data, urgency }) {
 		}
 	};
 
+	const computeDate = (secs) => {
+		const output = new Date(secs * 1000).toString().split(' ');
+		return `${output[1]} ${output[2]}, ${output[3]}`;
+	};
+
+	const lastPurchase = data.dateLastPurchased
+		? computeDate(data.dateLastPurchased.seconds)
+		: 'N/A';
+	const nextPurchase = data.dateNextPurchased
+		? computeDate(data.dateNextPurchased.seconds)
+		: 'N/A';
+
 	return (
 		<>
-			<li className="ListItem">
-				<label htmlFor={name}>
-					<input
-						type="checkbox"
-						id={name}
-						onChange={handleChange}
-						checked={checkedState}
-					/>
-					{name}
-				</label>
-				<p>{` - ${urgencyString(urgency)}`}</p>
-        <button onClick={confirmDelete}>Delete Item</button>
+			<li
+				style={{ zIndex: String(listLength - index - 1) }}
+				className={`w-full text-white relative px-4
+					${urgencyColors[urgency]}
+					${
+						listLength === 1
+							? listItemStyles['unique']
+							: index === 0
+							? listItemStyles['top-style']
+							: index === listLength - 1
+							? listItemStyles['bottom-style']
+							: listItemStyles['middle-style']
+					}`}
+			>
+				<div className="flex justify-between align-center">
+					<label htmlFor={name} className="flex">
+						<input
+							type="checkbox"
+							id={name}
+							onChange={handleChange}
+							checked={checkedState}
+							className="hidden"
+						/>
+						{data.checked && (
+							<FontAwesomeIcon
+								icon={faCircleCheck}
+								className="mr-2 text-xl self-center"
+							/>
+						)}
+						{!data.checked && (
+							<FontAwesomeIcon
+								icon={faCircle}
+								className="mr-2 hover:cursor-pointer text-xl self-center"
+							/>
+						)}
+						<span className="mr-2 hover:cursor-pointer self-center">
+							{name}
+						</span>
+						<img
+							src={urgencyMushroomsImg[urgency]}
+							className="inline-block h-7 self-center"
+						/>
+					</label>
+
+					<div>
+						<button onClick={() => setDetailsOpen(!detailsOpen)}>
+							{detailsOpen && (
+								<FontAwesomeIcon icon={faCircleChevronUp} className="text-xl" />
+							)}
+
+							{!detailsOpen && (
+								<FontAwesomeIcon
+									icon={faCircleChevronDown}
+									className="text-xl"
+								/>
+							)}
+						</button>
+
+						<button onClick={confirmDelete} className="ml-5 text-xl">
+							<FontAwesomeIcon icon={faTrashCan} />
+						</button>
+					</div>
+				</div>
+
+				{detailsOpen && (
+					<div className="flex flex-col justify-between max-w-xs mt-3 ml-7 text-sm">
+						<p>
+							Next Purchase: <span className="font-bold">{nextPurchase}</span>
+							{` (${urgencyString(urgency)})`}
+						</p>
+						<p>
+							Last Purchase: <span className="">{lastPurchase}</span>
+						</p>
+						<p>
+							Total Purchases:{' '}
+							<span className="font-bold">{data.totalPurchases}</span>
+						</p>
+					</div>
+				)}
 			</li>
 		</>
-
 	);
 }

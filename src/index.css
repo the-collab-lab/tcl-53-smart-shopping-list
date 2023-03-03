@@ -1,4 +1,17 @@
-:root {
+/* Custom Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@100;400;700&display=swap');
+@font-face {
+	font-family: 'Psychofun';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../public/fonts/PsychofunRegular-vmBXy.ttf');
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* :root {
 	--color-black: hsla(220, 13%, 18%, 1);
 	--color-gray-dark: hsla(220, 13%, 25%, 1);
 	--color-white: hsla(220, 13%, 98%, 1);
@@ -36,12 +49,12 @@
 *::after,
 *::before {
 	box-sizing: border-box;
-}
+} */
 
 /**
  * Make sure the app fills the height of the viewport
  */
-html,
+/* html,
 body,
 #root,
 #root > * {
@@ -91,4 +104,4 @@ code {
 
 ul {
 	padding: 0;
-}
+} */
