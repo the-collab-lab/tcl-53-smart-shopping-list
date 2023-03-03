@@ -7,22 +7,6 @@ export function NavWithEffect() {
 
 	return (
 		<>
-			{/* previous navlinks */}
-			{/* <nav className={`hidden`}>
-                <p>
-                    This will be the lower tab and transition effect. It replaces the
-                    navigation bar & links.
-                </p>
-                <NavLink to="/" className="Nav-link">
-                    Home
-                </NavLink>
-                <NavLink to="/list" className="Nav-link">
-                    List
-                </NavLink>
-                <NavLink to="/add-item" className="Nav-link">
-                    Add Item
-                </NavLink>
-            </nav> */}
 			<nav
 				className={
 					location.pathname === '/add-item'
@@ -62,7 +46,6 @@ export function NavWithEffect() {
 					</NavLink>
 				</div>
 			</nav>
-			{/* transition screens  to be added*/}
 		</>
 	);
 }
