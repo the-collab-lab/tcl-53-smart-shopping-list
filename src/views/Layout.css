@@ -8,6 +8,11 @@
  * @see: https://developer.mozilla.org/en-US/docs/Web/CSS/env
  */
 
+.Layout {
+	padding-top: env(safe-area-inset-top);
+	padding-bottom: env(safe-area-inset-bottom);
+}
+
 .tooltiptext {
 	color: white;
 	background-color: #192733;
