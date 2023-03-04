@@ -43,10 +43,10 @@ export function Layout({ data, listToken, allDetailsOpen, setAllDetailsOpen }) {
 
 	return (
 		<>
-			<div className="h-screen md:max-w-md md:mx-auto">
-				{listToken && (
-					<header className="h-auto my-8">
-						<div className="flex items-center gap-4">
+			<div className="h-screen max-w-md mx-auto bg-white overflow-y-clip">
+				{currentPath !== '/' && (
+					<header className="h-auto py-8">
+						<div className="flex items-center gap-4 px-5">
 							<img
 								src="/img/logo-header.svg"
 								alt="Shroomy logo"
@@ -122,7 +122,9 @@ export function Layout({ data, listToken, allDetailsOpen, setAllDetailsOpen }) {
 				<main className="Layout-main">
 					<Outlet />
 				</main>
-				<NavWithEffect />
+				<nav>
+					<NavWithEffect />
+				</nav>
 			</div>
 		</>
 	);

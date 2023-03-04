@@ -85,6 +85,7 @@ export function List({ data, listToken, allDetailsOpen }) {
 									urgency={list.urgency}
 									listLength={filteredItems.length}
 									index={index}
+									allDetailsOpen={allDetailsOpen}
 								/>
 							);
 						})

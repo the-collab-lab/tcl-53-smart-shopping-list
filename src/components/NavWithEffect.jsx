@@ -43,7 +43,7 @@ export function NavWithEffect() {
 						: 'hidden'
 				}
 			>
-				<div className="h-[20%] relative">
+				<div className="h-[20%] relative w-full">
 					<div
 						className={`${
 							!animate && 'animate-slideUp'
@@ -85,7 +85,7 @@ export function NavWithEffect() {
 						: 'hidden'
 				}
 			>
-				<div className="w-full md:max-w-md h-20 bg-main absolute bottom-0 rounded-t-3xl shadow-[0_-4px_4px_rgba(0,0,0,0.5)] z-10">
+				<div className="w-full max-w-md h-20 bg-main absolute bottom-0 rounded-t-3xl shadow-[0_-4px_4px_rgba(0,0,0,0.5)] z-10">
 					<NavLink
 						to="/list"
 						className="Nav-link w-fit h-fit mx-auto grid z-10"
