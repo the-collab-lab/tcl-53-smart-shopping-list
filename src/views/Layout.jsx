@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Outlet, Link, NavLink, useLocation } from 'react-router-dom';
+import { Outlet, Link, useLocation } from 'react-router-dom';
 
 import { NavWithEffect } from '../components/NavWithEffect';
 
@@ -16,7 +16,7 @@ import './Layout.css';
  * defined in `App.jsx`.
  */
 
-export function Layout({ data, listToken }) {
+export function Layout({ data, listToken, allDetailsOpen, setAllDetailsOpen }) {
 	const location = useLocation();
 	const currentPath = location.pathname;
 
@@ -35,6 +35,10 @@ export function Layout({ data, listToken }) {
 			setShowListToken(false);
 			setCopiedToken(false);
 		}, 2000);
+	}
+
+	function openAllItemDetails() {
+		setAllDetailsOpen((prevState) => !prevState);
 	}
 
 	return (
@@ -77,10 +81,13 @@ export function Layout({ data, listToken }) {
 									</span>{' '}
 									in your shopping list
 								</p>
-								<div className="flex justify-center gap-2 mt-1">
-									<span className="text-sm font-bold hover:text-main hover:cursor-pointer">
-										Show all item details
-									</span>
+								<div className="flex justify-center items-center gap-2 mt-1">
+									<button
+										className="text-sm font-bold hover:text-main hover:cursor-pointer"
+										onClick={openAllItemDetails}
+									>
+										{allDetailsOpen ? 'Hide' : 'Show'} all item details
+									</button>
 									<div>|</div>
 									<Link
 										to="/about"
