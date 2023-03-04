@@ -132,18 +132,18 @@ export function ListItem({
 							id={name}
 							onChange={handleChange}
 							checked={checkedState}
-							className="opacity-0 absolute"
+							className="opacity-0 absolute peer"
 						/>
 						{data.checked && (
 							<FontAwesomeIcon
 								icon={faCircleCheck}
-								className="mr-2 text-xl self-center"
+								className="mr-2 text-xl self-center peer-focus:ring rounded"
 							/>
 						)}
 						{!data.checked && (
 							<FontAwesomeIcon
 								icon={faCircle}
-								className="mr-2 hover:cursor-pointer text-xl self-center"
+								className="mr-2 hover:cursor-pointer text-xl self-center peer-focus:ring rounded"
 							/>
 						)}
 						<span className="mr-2 hover:cursor-pointer self-center">
