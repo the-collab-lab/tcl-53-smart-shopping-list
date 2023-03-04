@@ -58,7 +58,7 @@ export function ListItem({
 			'shadow-[0_4px_0_white] rounded-br-3xl rounded-tl-3xl rounded-tr-lg py-4',
 		'middle-style': 'shadow-[0_4px_0_white] rounded-br-3xl -mt-6 pb-4 pt-10',
 		'bottom-style': '-mt-6 rounded-b-3xl pb-4 pt-10',
-		unique: 'rounded-full py-4',
+		unique: 'rounded-3xl rounded-tr-lg py-4',
 	};
 
 	const checkTimePast = () => {
@@ -220,18 +220,18 @@ export function ListItem({
 								id={name}
 								onChange={handleChange}
 								checked={checkedState}
-								className="hidden"
+								className="opacity-0 absolute peer"
 							/>
 							{data.checked && (
 								<FontAwesomeIcon
 									icon={faCircleCheck}
-									className="mr-2 text-xl self-center"
+									className="mr-2 text-xl self-center peer-focus:ring rounded"
 								/>
 							)}
 							{!data.checked && (
 								<FontAwesomeIcon
 									icon={faCircle}
-									className="mr-2 hover:cursor-pointer text-xl self-center"
+									className="mr-2 hover:cursor-pointer text-xl self-center peer-focus:ring rounded"
 								/>
 							)}
 							<span className="mr-2 hover:cursor-pointer self-center">

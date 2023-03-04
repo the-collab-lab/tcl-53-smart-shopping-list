@@ -57,11 +57,13 @@ export function Home({ listToken, setListToken }) {
 	}
 
 	return (
-		<div className="h-screen flex flex-col items-center justify-around pt-8">
+		<div className="h-screen flex flex-col items-center justify-around pt-[10%] relative">
 			<div className="flex flex-col items-center gap-6">
-				<img src="/img/logo.svg" alt="Shroomy logo" className="w-20 mt-6" />
+				<img src="/img/logo.svg" alt="Shroomy logo" className="w-20" />
 				<h1 className="text-6xl font-logo -my-2">Shroomy</h1>
-				<p className="text-2xl font-logo">your groovy shopping companion</p>
+				<p className="text-2xl font-logo text-center px-5">
+					your groovy shopping companion
+				</p>
 
 				<div className="flex flex-col items-center gap-6 mt-6">
 					<button
@@ -92,7 +94,7 @@ export function Home({ listToken, setListToken }) {
 				</div>
 			</div>
 
-			<div className="bg-[url('/img/home-bg.svg')] w-full h-64 mb-6"></div>
+			<div className="bg-[url('/img/home-bg.svg')] w-full h-[20rem] bg-cover"></div>
 		</div>
 	);
 }
