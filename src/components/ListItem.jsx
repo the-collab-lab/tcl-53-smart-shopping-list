@@ -132,7 +132,7 @@ export function ListItem({
 							id={name}
 							onChange={handleChange}
 							checked={checkedState}
-							className="hidden"
+							className="opacity-0 absolute"
 						/>
 						{data.checked && (
 							<FontAwesomeIcon
