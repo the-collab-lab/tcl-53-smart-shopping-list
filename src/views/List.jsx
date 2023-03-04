@@ -40,7 +40,7 @@ export function List({ data, listToken, allDetailsOpen }) {
 				) : (
 					<form
 						onSubmit={(e) => e.preventDefault()}
-						className="mx-5 text-sm grid mt-10"
+						className="mx-5 text-sm grid"
 					>
 						<label htmlFor="search" className="pl-4">
 							Filter items
@@ -85,6 +85,7 @@ export function List({ data, listToken, allDetailsOpen }) {
 									urgency={list.urgency}
 									listLength={filteredItems.length}
 									index={index}
+									allDetailsOpen={allDetailsOpen}
 								/>
 							);
 						})
