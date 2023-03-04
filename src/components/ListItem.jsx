@@ -212,26 +212,28 @@ export function ListItem({
 							? listItemStyles['bottom-style']
 							: listItemStyles['middle-style']
 					}`}
-			>
-				<div className="flex justify-between align-center">
-					<label htmlFor={name} className="flex">
-						<input
-							type="checkbox"
-							id={name}
-							onChange={handleChange}
-							checked={checkedState}
-							className="opacity-0 absolute peer"
-						/>
-						{data.checked && (
-							<FontAwesomeIcon
-								icon={faCircleCheck}
-								className="mr-2 text-xl self-center peer-focus:ring rounded"
+				>
+					<div className="flex justify-between align-center">
+						<label htmlFor={name} className="flex">
+							<input
+								type="checkbox"
+								id={name}
+								onChange={handleChange}
+								checked={checkedState}
+								className="opacity-0 absolute peer"
 							/>
-						)}
-						{!data.checked && (
-							<FontAwesomeIcon
-								icon={faCircle}
-								className="mr-2 hover:cursor-pointer text-xl self-center peer-focus:ring rounded"
+							{data.checked && (
+								<FontAwesomeIcon
+									icon={faCircleCheck}
+									className="mr-2 text-xl self-center peer-focus:ring rounded"
+								/>
+							)}
+							{!data.checked && (
+								<FontAwesomeIcon
+									icon={faCircle}
+									className="mr-2 hover:cursor-pointer text-xl self-center peer-focus:ring rounded"
+								/>
+							)}
 							<span className="mr-2 hover:cursor-pointer self-center">
 								{name}
 							</span>
