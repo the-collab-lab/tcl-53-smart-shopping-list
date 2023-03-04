@@ -1,6 +1,6 @@
 export function About() {
 	return (
-		<section className="p-10 text-center overflow-y-scroll h-screen">
+		<section className="p-10 text-center overflow-y-scroll h-screen pb-32">
 			<img
 				src="/img/logo.svg"
 				alt="Shroomy logo"
