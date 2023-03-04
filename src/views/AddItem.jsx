@@ -98,7 +98,7 @@ export function AddItem({ data, listToken }) {
 					<input
 						type="text"
 						id="itemName"
-						value={itemName}
+						value={itemName ? itemName : undefined}
 						onChange={handleChange}
 						placeholder="start typing..."
 						className="bg-main-light text-main-darkest rounded-full py-1 pl-3 w-[80%] placeholder:text-main placeholder:italic"
