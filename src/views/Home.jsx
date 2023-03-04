@@ -55,7 +55,7 @@ export function Home({ listToken, setListToken }) {
 	}
 
 	return (
-		<div className="h-screen flex flex-col items-center justify-around pt-[10%] relative">
+		<div className="h-screen flex flex-col items-center justify-between pt-[25%] relative">
 			<div className="flex flex-col items-center gap-6">
 				<img src="/img/logo.svg" alt="Shroomy logo" className="w-20" />
 				<h1 className="text-6xl font-logo -my-2">Shroomy</h1>
