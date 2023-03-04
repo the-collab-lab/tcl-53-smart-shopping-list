@@ -81,7 +81,7 @@ export function Layout({ data, listToken, setAllDetailsOpen }) {
 									</span>{' '}
 									in your shopping list
 								</p>
-								<div className="flex justify-center gap-2 mt-1">
+								<div className="flex justify-center items-center gap-2 mt-1">
 									<button
 										className="text-sm font-bold hover:text-main hover:cursor-pointer"
 										onClick={openAllItemDetails}
