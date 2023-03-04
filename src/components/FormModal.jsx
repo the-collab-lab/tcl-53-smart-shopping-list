@@ -9,7 +9,7 @@ export default function FormModal({
 	errorMessage,
 }) {
 	return (
-		<div className="bg-[rgba(0,0,0,0.4)] w-screen h-screen flex justify-center items-center fixed">
+		<div className="bg-[rgba(0,0,0,0.4)] w-screen h-screen flex justify-center items-center fixed z-50">
 			<form
 				onSubmit={handleSubmit}
 				className="bg-white h-64 flex flex-col items-start justify-center gap-4 rounded-md px-10"
