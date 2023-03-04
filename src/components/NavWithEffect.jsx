@@ -37,7 +37,7 @@ export function NavWithEffect() {
 			<div
 				className={
 					location.pathname === '/list'
-						? `place-content-end flex flex-col w-full max-w-md fixed bottom-0 z-[99999] ${
+						? `place-content-end flex flex-col w-full max-w-md absolute bottom-0 z-[99999] ${
 								animate && 'animate-closePanel'
 						  }`
 						: 'hidden'
