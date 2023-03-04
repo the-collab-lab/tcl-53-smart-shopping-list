@@ -57,6 +57,7 @@ export function App() {
 							<Layout
 								data={data}
 								listToken={listToken}
+								allDetailsOpen={allDetailsOpen}
 								setAllDetailsOpen={setAllDetailsOpen}
 							/>
 						}

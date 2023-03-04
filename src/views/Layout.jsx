@@ -16,7 +16,7 @@ import './Layout.css';
  * defined in `App.jsx`.
  */
 
-export function Layout({ data, listToken, setAllDetailsOpen }) {
+export function Layout({ data, listToken, allDetailsOpen, setAllDetailsOpen }) {
 	const location = useLocation();
 	const currentPath = location.pathname;
 
