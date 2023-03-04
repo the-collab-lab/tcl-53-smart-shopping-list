@@ -14,7 +14,7 @@ import './Layout.css';
 export function Layout() {
 	return (
 		<>
-			<div className="Layout h-screen max-w-md mx-auto overflow-clip bg-white">
+			<div className="Layout h-screen max-w-md mx-auto overflow-y-scroll bg-white">
 				<header className="Layout-header">
 					<h1>Smart shopping list</h1>
 				</header>
