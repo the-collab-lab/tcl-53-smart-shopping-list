@@ -1,4 +1,3 @@
-import './ListItem.css';
 import { updateItem, deleteItem } from '../api/firebase';
 import { useEffect, useState } from 'react';
 import { getFutureDate } from '../utils';

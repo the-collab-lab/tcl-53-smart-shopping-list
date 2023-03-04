@@ -5,8 +5,6 @@ import { generateToken } from '@the-collab-lab/shopping-list-utils';
 import { getItemData, streamListItems } from '../api';
 import FormModal from '../components/FormModal';
 
-import './Home.css';
-
 export function Home({ listToken, setListToken }) {
 	const [existingToken, setExistingToken] = useState('');
 	const [errorMessage, setErrorMessage] = useState('');
