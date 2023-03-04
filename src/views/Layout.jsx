@@ -86,7 +86,7 @@ export function Layout({ data, listToken, setAllDetailsOpen }) {
 										className="text-sm font-bold hover:text-main hover:cursor-pointer"
 										onClick={openAllItemDetails}
 									>
-										Show all item details
+										{allDetailsOpen ? 'Hide' : 'Show'} all item details
 									</button>
 									<div>|</div>
 									<Link
