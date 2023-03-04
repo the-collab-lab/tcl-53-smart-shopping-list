@@ -7,7 +7,57 @@
  *
  * @see: https://developer.mozilla.org/en-US/docs/Web/CSS/env
  */
+
 .Layout {
 	padding-top: env(safe-area-inset-top);
 	padding-bottom: env(safe-area-inset-bottom);
+}
+
+.tooltiptext {
+	color: white;
+	background-color: #192733;
+	font-size: 12px;
+	width: 120px;
+	visibility: hidden;
+	position: absolute;
+	z-index: 2;
+	border-radius: 10px;
+	padding: 6px 0;
+}
+
+.tooltiptext.icon {
+	top: 25px;
+}
+
+.tooltiptext.token {
+	top: -40px;
+}
+
+.tooltiptext::before {
+	background-color: #192733;
+	content: '';
+	position: absolute;
+	z-index: 1;
+	transform: rotate(45deg);
+	padding: 5px;
+}
+
+.tooltiptext.icon::before {
+	top: -5%;
+	left: 45%;
+}
+
+.tooltiptext.token::before {
+	top: 90%;
+	left: 45%;
+}
+
+.tooltip:hover .tooltiptext,
+.tooltip:focus .tooltiptext {
+	visibility: visible;
+}
+
+.tooltip {
+	position: relative;
+	text-align: center;
 }
