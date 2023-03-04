@@ -10,15 +10,14 @@ export function NavWithEffect() {
 	return (
 		<>
 			{/* Navigation for Home page */}
-			<div
+			<NavLink
+				to="/about"
 				className={`${
 					location.pathname !== '/' && 'hidden'
-				} shadow-[0_-4px_4px_rgba(0,0,0,0.5)] w-full max-w-md h-10 bg-main absolute bottom-0 grid place-content-center`}
+				} shadow-[0_-4px_4px_rgba(0,0,0,0.5)] w-full max-w-md h-10 bg-main absolute bottom-0 grid place-content-center hover:animate-bounce`}
 			>
-				<NavLink to="/about" className="Nav-link ">
-					<p className="text-center text-white font-bold">{`Learn how Shroomy works >>`}</p>
-				</NavLink>
-			</div>
+				<p className="text-center text-white font-bold">{`Learn how Shroomy works >>`}</p>
+			</NavLink>
 
 			{/* Navigation for About page */}
 			<div
@@ -28,9 +27,9 @@ export function NavWithEffect() {
 			>
 				<NavLink
 					to="/"
-					className="Nav-link shadow-[4px_4px_4px_rgba(0,0,0,0.5)] h-10 bg-main-darkest rounded-full px-10 grid place-content-center animate-slideUp"
+					className="Nav-link border border-main-darkest text-white hover:text-main-darkest hover:bg-white shadow-[4px_4px_4px_rgba(0,0,0,0.5)] h-10 bg-main-darkest rounded-full px-10 grid place-content-center animate-slideUp"
 				>
-					<p className="text-center text-white font-bold uppercase">{`Get Started`}</p>
+					<p className="text-center font-bold uppercase ">{`Get Started`}</p>
 				</NavLink>
 			</div>
 
@@ -38,7 +37,7 @@ export function NavWithEffect() {
 			<div
 				className={
 					location.pathname === '/list'
-						? `place-content-end flex flex-col w-full max-w-md fixed bottom-0 ${
+						? `place-content-end flex flex-col w-full max-w-md fixed bottom-0 z-[99999] ${
 								animate && 'animate-closePanel'
 						  }`
 						: 'hidden'
@@ -54,13 +53,21 @@ export function NavWithEffect() {
 							to="/add-item"
 							className="Nav-link w-fit h-fit mx-auto grid text-white uppercase text-center font-bold gap-3 justify-items-center"
 						>
-							<FontAwesomeIcon
-								icon={faPlus}
-								transform="shrink-3"
-								className={`${
-									animate && 'animate-rotateOutButton'
-								} pl-0.5 text-6xl aspect-square shadow-[0_4px_4px_rgba(0,0,0,0.5)] bg-main-darkest rounded-full border text-white -mt-8`}
-							/>
+							<div className="group">
+								<FontAwesomeIcon
+									icon={faPlus}
+									transform="shrink-3"
+									className={`opacity-0 group-hover:opacity-100 absolute group-hover:scale-105 pl-0.5 text-6xl aspect-square shadow-[0_4px_4px_rgba(0,0,0,0.5)] bg-main-darkest rounded-full border text-white -mt-8 hover:scale-105`}
+								/>
+								<FontAwesomeIcon
+									icon={faPlus}
+									transform="shrink-3"
+									className={`${
+										animate && 'animate-rotateOutButton'
+									} group-hover:opacity-0 pl-0.5 text-6xl aspect-square shadow-[0_4px_4px_rgba(0,0,0,0.5)] bg-main-darkest rounded-full border text-white -mt-8 hover:scale-105`}
+								/>
+							</div>
+
 							<p className="animate-appear">Add new item</p>
 						</NavLink>
 					</div>
@@ -74,7 +81,7 @@ export function NavWithEffect() {
 			<div
 				className={
 					location.pathname === '/add-item'
-						? 'md:max-w-md absolute top-0 w-full animate-openPanel'
+						? 'max-w-md absolute top-0 w-full animate-openPanel'
 						: 'hidden'
 				}
 			>
@@ -84,11 +91,18 @@ export function NavWithEffect() {
 						className="Nav-link w-fit h-fit mx-auto grid z-10"
 						onClick={() => setAnimate(true)}
 					>
-						<FontAwesomeIcon
-							icon={faPlus}
-							transform="shrink-3"
-							className="animate-rotateButton pl-0.5 rotate-45 text-6xl aspect-square shadow-[0_4px_4px_rgba(0,0,0,0.5)] bg-main-darkest rounded-full border text-white -mt-8"
-						/>
+						<div className="group">
+							<FontAwesomeIcon
+								icon={faPlus}
+								transform="shrink-3"
+								className="opacity-0 group-hover:opacity-100 absolute group-hover:scale-105 pl-0.5 rotate-45 text-6xl aspect-square shadow-[0_4px_4px_rgba(0,0,0,0.5)] bg-main-darkest rounded-full border text-white -mt-8"
+							/>
+							<FontAwesomeIcon
+								icon={faPlus}
+								transform="shrink-3"
+								className="group-hover:opacity-0 animate-rotateButton pl-0.5 rotate-45 text-6xl aspect-square shadow-[0_4px_4px_rgba(0,0,0,0.5)] bg-main-darkest rounded-full border text-white -mt-8"
+							/>
+						</div>
 					</NavLink>
 				</div>
 				<NavLink

@@ -7,6 +7,7 @@ import { useStateWithStorage } from './utils';
 
 export function App() {
 	const [data, setData] = useState([]);
+	const [allDetailsOpen, setAllDetailsOpen] = useState(false);
 	/**
 	 * Here, we're using a custom hook to create `listToken` and a function
 	 * that can be used to update `listToken` later.
@@ -50,7 +51,17 @@ export function App() {
 		<div className="bg-main-light/[0.4]">
 			<Router>
 				<Routes>
-					<Route path="/" element={<Layout />}>
+					<Route
+						path="/"
+						element={
+							<Layout
+								data={data}
+								listToken={listToken}
+								allDetailsOpen={allDetailsOpen}
+								setAllDetailsOpen={setAllDetailsOpen}
+							/>
+						}
+					>
 						<Route
 							index
 							element={
@@ -59,13 +70,18 @@ export function App() {
 						/>
 						<Route
 							path="/list"
-							element={<List data={data} listToken={listToken} />}
+							element={
+								<List
+									data={data}
+									listToken={listToken}
+									allDetailsOpen={allDetailsOpen}
+								/>
+							}
 						/>
 						<Route
 							path="/add-item"
 							element={<AddItem data={data} listToken={listToken} />}
 						/>
-						<Route path="/about" element={<About />} />
 					</Route>
 				</Routes>
 			</Router>

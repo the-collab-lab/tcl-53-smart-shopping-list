@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { addItem } from '../api/firebase';
+import { AddItemBackground } from '../components/AddItemBackground';
 
 export function AddItem({ data, listToken }) {
-	const radioStyle = 'mr-5';
+	const radioStyle =
+		'checked:border-white checked:bg-main checked:border-4 appearance-none bg-white w-4 h-4 mr-5 rounded-full cursor-pointer';
+	const radioLabelStyle = 'cursor-pointer flex flex-row items-center';
 
 	const SOON = 7;
 	const KINDA_SOON = 14;
@@ -10,9 +13,7 @@ export function AddItem({ data, listToken }) {
 
 	const [itemName, setItemName] = useState('');
 	const [nextPurchase, setNextPurchase] = useState(0);
-	const [submissionConfirmation, setSubmissionConfirmation] = useState(
-		'TO BE REMOVED: placeholder for confirmation message',
-	);
+	const [submissionConfirmation, setSubmissionConfirmation] = useState();
 
 	const handleChange = (e) => {
 		setItemName(e.target.value);
@@ -64,13 +65,15 @@ export function AddItem({ data, listToken }) {
 
 				// put a note that the form was submitted (and erase after 5 seconds)
 				setSubmissionConfirmation(
-					`${itemName} was added to your shopping list.`,
+					`${
+						itemName[0].toUpperCase() + itemName.slice(1)
+					} was added to your shopping list.`,
 				);
 				setTimeout(setSubmissionConfirmation, 5000);
 			})
 			.catch((error) => {
 				setSubmissionConfirmation(
-					`There was a problem adding your item, please try again.`,
+					`There was a problem adding your item, please try again later.`,
 				);
 				console.log(error);
 			});
@@ -78,16 +81,17 @@ export function AddItem({ data, listToken }) {
 
 	return (
 		<>
-			<div className="bg-main text-white w-full h-[80%] absolute bottom-0 md:max-w-md animate-openAddItem overflow-clip z-10">
-				<div
-					id="image"
-					className="h-60 w-full bg-main-darkest absolute bottom-0 animate-appear"
-				/>
+			<div className="bg-main text-white w-full h-[83%] absolute bottom-0 max-w-md animate-openAddItem overflow-clip z-10">
+				<div className="w-full absolute bottom-0 animate-appear">
+					<AddItemBackground className="w-full h-full fill-main-darkest" />
+				</div>
 				<form
 					onSubmit={submitForm}
-					className="grid justify-items-center w-full mt-10 relative"
+					className="grid justify-items-center w-full relative pt-5"
 				>
-					<h1 className="font-bold uppercase text-center my-5">add new item</h1>
+					<h1 className="text-2xl tracking-wide font-bold uppercase text-center my-10">
+						add new item
+					</h1>
 					<label htmlFor="itemName" className="text-center">
 						Item Name
 					</label>
@@ -100,7 +104,6 @@ export function AddItem({ data, listToken }) {
 						className="bg-main-light text-main-darkest rounded-full py-1 pl-3 w-[80%] placeholder:text-main placeholder:italic"
 					/>
 
-					{/* <label htmlFor="buyAgain">How soon will you buy this again?</label> */}
 					<fieldset
 						name="buyAgain"
 						className="grid border border-white px-10 py-5 gap-2 my-5 shadow-lg"
@@ -108,7 +111,7 @@ export function AddItem({ data, listToken }) {
 						<legend htmlFor="buyAgain" className="text-center w-44 font-bold">
 							How soon will you need to buy this again?
 						</legend>
-						<label htmlFor="soon">
+						<label htmlFor="soon" className={radioLabelStyle}>
 							<input
 								type="radio"
 								id="soon"
@@ -120,7 +123,7 @@ export function AddItem({ data, listToken }) {
 							Soon
 						</label>
 
-						<label htmlFor="kindaSoon">
+						<label htmlFor="kindaSoon" className={radioLabelStyle}>
 							<input
 								type="radio"
 								id="kindaSoon"
@@ -132,7 +135,7 @@ export function AddItem({ data, listToken }) {
 							Kinda Soon
 						</label>
 
-						<label htmlFor="notSoon">
+						<label htmlFor="notSoon" className={radioLabelStyle}>
 							<input
 								type="radio"
 								id="notSoon"
@@ -147,12 +150,12 @@ export function AddItem({ data, listToken }) {
 
 					<button
 						type="submit"
-						className="bg-white text-main rounded-full p-2 w-44 mt-10 shadow-[0_4px_4px_rgba(0,0,0,0.4)]"
+						className="bg-white text-main-darkest border border-main-darkest hover:text-white hover:bg-main-darkest rounded-full p-2 w-44 mt-10 shadow-[0_4px_4px_rgba(0,0,0,0.4)]"
 					>
 						Add Item
 					</button>
 					{submissionConfirmation && (
-						<p className="italic mt-5 text-center max-w-xs">
+						<p className="italic mt-5 p-5 text-center max-w-xs text-sm backdrop-blur rounded-xl bg-main-darkest/[0.7]">
 							{submissionConfirmation}
 						</p>
 					)}
