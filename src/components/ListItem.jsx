@@ -56,7 +56,7 @@ export function ListItem({
 			'shadow-[0_4px_0_white] rounded-br-3xl rounded-tl-3xl rounded-tr-lg py-4',
 		'middle-style': 'shadow-[0_4px_0_white] rounded-br-3xl -mt-6 pb-4 pt-10',
 		'bottom-style': '-mt-6 rounded-b-3xl pb-4 pt-10',
-		unique: 'rounded-full py-4',
+		unique: 'rounded-3xl rounded-tr-lg py-4',
 	};
 
 	const checkTimePast = () => {
