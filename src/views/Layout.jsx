@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 
 import { NavWithEffect } from '../components/NavWithEffect';
@@ -18,7 +18,11 @@ import './Layout.css';
 
 export function Layout({ data, listToken, allDetailsOpen, setAllDetailsOpen }) {
 	const location = useLocation();
-	const currentPath = location.pathname;
+	const [currentPath, setCurrentPath] = useState('/');
+
+	useEffect(() => {
+		setCurrentPath(location.currentPath);
+	}, [location.currentPath]);
 
 	const [showListToken, setShowListToken] = useState(false);
 	const [copiedToken, setCopiedToken] = useState(false);
