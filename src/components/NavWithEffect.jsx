@@ -43,7 +43,11 @@ export function NavWithEffect() {
 						: 'hidden'
 				}
 			>
-				<div className="h-[20%] relative w-full">
+				<div
+					className={`relative w-full ${
+						!animate && 'absolute h-32 overflow-y-clip'
+					}`}
+				>
 					<div
 						className={`${
 							!animate && 'animate-slideUp'
