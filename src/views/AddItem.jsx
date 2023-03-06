@@ -13,7 +13,7 @@ export function AddItem({ data, listToken }) {
 
 	const [itemName, setItemName] = useState('');
 	const [nextPurchase, setNextPurchase] = useState(0);
-	const [submissionConfirmation, setSubmissionConfirmation] = useState();
+	const [submissionConfirmation, setSubmissionConfirmation] = useState('');
 
 	const handleChange = (e) => {
 		setItemName(e.target.value);
@@ -98,7 +98,7 @@ export function AddItem({ data, listToken }) {
 					<input
 						type="text"
 						id="itemName"
-						value={itemName ? itemName : undefined}
+						value={itemName}
 						onChange={handleChange}
 						placeholder="start typing..."
 						className="bg-main-light text-main-darkest rounded-full py-1 pl-3 w-[80%] placeholder:text-main placeholder:italic"
