@@ -19,10 +19,11 @@ import './Layout.css';
 export function Layout({ data, listToken, allDetailsOpen, setAllDetailsOpen }) {
 	const location = useLocation();
 	const [currentPath, setCurrentPath] = useState('/');
+	console.log(currentPath);
 
 	useEffect(() => {
-		setCurrentPath(location.currentPath);
-	}, [location.currentPath]);
+		setCurrentPath(location.pathname);
+	}, [location.pathname]);
 
 	const [showListToken, setShowListToken] = useState(false);
 	const [copiedToken, setCopiedToken] = useState(false);
