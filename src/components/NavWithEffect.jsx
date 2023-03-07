@@ -27,6 +27,7 @@ export function NavWithEffect() {
 			>
 				<NavLink
 					to="/"
+					onClick={() => setAnimate(false)}
 					className="Nav-link border border-main-darkest text-white hover:text-main-darkest hover:bg-white shadow-[4px_4px_4px_rgba(0,0,0,0.5)] h-10 bg-main-darkest rounded-full px-10 grid place-content-center animate-slideUp"
 				>
 					<p className="text-center font-bold uppercase ">{`Get Started`}</p>
@@ -43,7 +44,11 @@ export function NavWithEffect() {
 						: 'hidden'
 				}
 			>
-				<div className="h-[20%] relative w-full">
+				<div
+					className={`relative w-full ${
+						!animate && 'absolute h-32 overflow-y-clip'
+					}`}
+				>
 					<div
 						className={`${
 							!animate && 'animate-slideUp'

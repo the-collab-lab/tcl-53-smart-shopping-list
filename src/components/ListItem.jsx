@@ -155,6 +155,7 @@ export function ListItem({
 							<img
 								src={urgencyMushroomsImg[urgency]}
 								className="inline-block h-7 self-center"
+								alt=""
 							/>
 						</label>
 
@@ -239,6 +240,7 @@ export function ListItem({
 							<img
 								src={urgencyMushroomsImg[urgency]}
 								className="inline-block h-7 self-center"
+								alt=""
 							/>
 						</label>
 
