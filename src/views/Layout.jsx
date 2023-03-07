@@ -18,11 +18,6 @@ import './Layout.css';
 
 export function Layout({ data, listToken, allDetailsOpen, setAllDetailsOpen }) {
 	const location = useLocation();
-	const [currentPath, setCurrentPath] = useState('/');
-
-	useEffect(() => {
-		setCurrentPath(location.pathname);
-	}, [location.pathname]);
 
 	const [showListToken, setShowListToken] = useState(false);
 	const [copiedToken, setCopiedToken] = useState(false);
@@ -48,7 +43,7 @@ export function Layout({ data, listToken, allDetailsOpen, setAllDetailsOpen }) {
 	return (
 		<>
 			<div className="h-screen max-w-md mx-auto bg-white overflow-y-clip">
-				{currentPath !== '/' && (
+				{location.pathname !== '/' && (
 					<header className="h-auto py-8">
 						<div className="flex items-center gap-4 px-5">
 							<img
@@ -57,7 +52,7 @@ export function Layout({ data, listToken, allDetailsOpen, setAllDetailsOpen }) {
 								className="w-10"
 							/>
 							<h1 className="font-logo text-3xl mr-auto">Shroomy</h1>
-							{currentPath !== '/about' && (
+							{location.pathname !== '/about' && (
 								<button
 									className="tooltip flex justify-center"
 									onClick={toggleListToken}
@@ -76,7 +71,7 @@ export function Layout({ data, listToken, allDetailsOpen, setAllDetailsOpen }) {
 								</button>
 							)}
 						</div>
-						{currentPath !== '/about' && (
+						{location.pathname !== '/about' && (
 							<>
 								<p className="text-center mt-4">
 									You have{' '}
