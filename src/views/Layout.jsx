@@ -41,7 +41,7 @@ export function Layout({ data, listToken, allDetailsOpen, setAllDetailsOpen }) {
 	}
 
 	return (
-		<>
+		<div className="bg-main-light/[0.4]">
 			<div className="h-screen max-w-md mx-auto bg-white overflow-y-clip">
 				{location.pathname !== '/' && (
 					<header className="h-auto py-8">
@@ -125,6 +125,6 @@ export function Layout({ data, listToken, allDetailsOpen, setAllDetailsOpen }) {
 					<NavWithEffect />
 				</nav>
 			</div>
-		</>
+		</div>
 	);
 }

@@ -47,44 +47,40 @@ export function App() {
 	}, [listToken]);
 
 	return (
-		<div className="bg-main-light/[0.4]">
-			<Router>
-				<Routes>
+		<Router>
+			<Routes>
+				<Route
+					path="/"
+					element={
+						<Layout
+							data={data}
+							listToken={listToken}
+							allDetailsOpen={allDetailsOpen}
+							setAllDetailsOpen={setAllDetailsOpen}
+						/>
+					}
+				>
 					<Route
-						path="/"
+						index
+						element={<Home listToken={listToken} setListToken={setListToken} />}
+					/>
+					<Route
+						path="/list"
 						element={
-							<Layout
+							<List
 								data={data}
 								listToken={listToken}
 								allDetailsOpen={allDetailsOpen}
-								setAllDetailsOpen={setAllDetailsOpen}
 							/>
 						}
-					>
-						<Route
-							index
-							element={
-								<Home listToken={listToken} setListToken={setListToken} />
-							}
-						/>
-						<Route
-							path="/list"
-							element={
-								<List
-									data={data}
-									listToken={listToken}
-									allDetailsOpen={allDetailsOpen}
-								/>
-							}
-						/>
-						<Route
-							path="/add-item"
-							element={<AddItem data={data} listToken={listToken} />}
-						/>
-						<Route path="/about" element={<About />} />
-					</Route>
-				</Routes>
-			</Router>
-		</div>
+					/>
+					<Route
+						path="/add-item"
+						element={<AddItem data={data} listToken={listToken} />}
+					/>
+					<Route path="/about" element={<About />} />
+				</Route>
+			</Routes>
+		</Router>
 	);
 }
