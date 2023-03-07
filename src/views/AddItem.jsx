@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { addItem } from '../api/firebase';
-import { AddItemBackground } from '../components/AddItemBackground';
 
 export function AddItem({ data, listToken }) {
 	const radioStyle =
@@ -82,9 +81,7 @@ export function AddItem({ data, listToken }) {
 	return (
 		<>
 			<div className="bg-main text-white w-full h-[83%] absolute bottom-0 max-w-md animate-openAddItem overflow-clip z-10">
-				<div className="w-full absolute bottom-0 animate-appear">
-					<AddItemBackground className="w-full h-full fill-main-darkest" />
-				</div>
+				<div className="w-full absolute bottom-0 animate-appear bg-[url('/img/add-item-background.svg')] bg-cover h-[15rem]"></div>
 				<form
 					onSubmit={submitForm}
 					className="grid justify-items-center w-full relative pt-5"

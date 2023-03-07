@@ -22,7 +22,7 @@ export function Home({ listToken, setListToken }) {
 		if (listToken) {
 			navigate('/list');
 		}
-	}, [listToken]);
+	});
 
 	const handleChange = (e) => {
 		setExistingToken(e.target.value);
