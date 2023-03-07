@@ -19,7 +19,6 @@ import './Layout.css';
 export function Layout({ data, listToken, allDetailsOpen, setAllDetailsOpen }) {
 	const location = useLocation();
 	const [currentPath, setCurrentPath] = useState('/');
-	console.log(currentPath);
 
 	useEffect(() => {
 		setCurrentPath(location.pathname);
