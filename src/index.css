@@ -5,7 +5,6 @@
 	font-style: normal;
 	font-weight: 400;
 	src: url('/fonts/PsychofunRegular-vmBXy.ttf');
-	src: url('/fonts/PsychofunRegular-vmBXy.ttf') format('truetype');
 }
 
 @tailwind base;
