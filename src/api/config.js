@@ -3,12 +3,15 @@ import { getFirestore } from 'firebase/firestore';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDfpwv0xTF9mtiM-rJJ47_U5Kl8yrKfcUM",
-  authDomain: "tcl-53-smart-shopping-list.firebaseapp.com",
-  projectId: "tcl-53-smart-shopping-list",
-  storageBucket: "tcl-53-smart-shopping-list.appspot.com",
-  messagingSenderId: "544151379544",
-  appId: "1:544151379544:web:cc730922e25c7a8f32f42d"
+	apiKey: 'AIzaSyBTkV1impN0eDfghtDEAi561_YFhG80Qic',
+	authDomain: 'shroomy-smart-shopping-list.firebaseapp.com',
+	databaseURL:
+		'https://shroomy-smart-shopping-list-default-rtdb.firebaseio.com',
+	projectId: 'shroomy-smart-shopping-list',
+	storageBucket: 'shroomy-smart-shopping-list.appspot.com',
+	messagingSenderId: '737176914870',
+	appId: '1:737176914870:web:c19d488bbd6afb4d394f17',
+	measurementId: 'G-3WD7FJ2NYZ',
 };
 
 // Initialize Firebase
