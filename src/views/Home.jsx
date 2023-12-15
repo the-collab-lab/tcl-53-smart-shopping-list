@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { useNavigate } from 'react-router-dom';
-import { generateToken } from '@the-collab-lab/shopping-list-utils';
+import {
+	generateToken,
+	ArchivalNoticeModal,
+} from '@the-collab-lab/shopping-list-utils';
 import { getItemData, streamListItems } from '../api';
 import FormModal from '../components/FormModal';
 
@@ -13,9 +16,7 @@ export function Home({ listToken, setListToken }) {
 	const navigate = useNavigate();
 
 	const createToken = async () => {
-		const token = await generateToken();
-
-		setListToken(token);
+		console.log('Creating lists is no longer supported');
 	};
 
 	useEffect(() => {
@@ -38,7 +39,7 @@ export function Home({ listToken, setListToken }) {
 			const nextData = getItemData(snapshot);
 
 			// if there is a list, set the token to the listToken state
-			if (nextData.length > 0) {
+			if (nextData) {
 				setListToken(caseSensitiveToken);
 			} else {
 				setErrorMessage("List doesn't exist");
@@ -93,6 +94,7 @@ export function Home({ listToken, setListToken }) {
 			</div>
 
 			<div className="bg-[url('/img/home-bg.svg')] w-full h-[20rem] bg-cover"></div>
+			<ArchivalNoticeModal />
 		</div>
 	);
 }
