@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import { useNavigate } from 'react-router-dom';
-import {
-	generateToken,
-	ArchivalNoticeModal,
-} from '@the-collab-lab/shopping-list-utils';
+import { ArchivalNoticeModal } from '@the-collab-lab/shopping-list-utils';
 import { getItemData, streamListItems } from '../api';
 import FormModal from '../components/FormModal';
 
